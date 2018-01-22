@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="emb" url="data/embedding_jpsi_muons.root" treeName="EmbedTree" />
+	<TFile url="export/embedding/eff.root" />
+
+	<!-- <Transform>
+		<Draw name="mcpt_5" data="emb" draw="mcpt" select="mcGeantId==5 && abs(mceta) < 0.5 && mcPkey>=0" bins_x="bins.pt"/>
+		<Draw name="mcpt_6" data="emb" draw="mcpt" select="mcGeantId==6 && abs(mceta) < 0.5 && mcPkey>=0" bins_x="bins.pt"/>
+
+		<Draw name="mceta_5" data="emb" draw="mceta" select="mcGeantId==5 && abs(mceta) < 0.5 && mcPkey>=0" bins_x="bins.eta"/>
+		<Draw name="mceta_6" data="emb" draw="mceta" select="mcGeantId==6 && abs(mceta) < 0.5 && mcPkey>=0" bins_x="bins.eta"/>
+
+		<Draw name="mcphi_5" data="emb" draw="mcphi" select="mcGeantId==5 && abs(mceta) < 0.5 && mcPkey>=0" bins_x="bins.phi"/>
+		<Draw name="mcphi_6" data="emb" draw="mcphi" select="mcGeantId==6 && abs(mceta) < 0.5 && mcPkey>=0" bins_x="bins.phi"/>
+	</Transform>
+
+	<Transform>
+		<Draw name="rcpt_5" data="emb" draw="mcpt" select="mcGeantId==5 && abs(mceta) < 0.5 && rcPkey >= 0 && rcNHitsFit >= 20 && rcDca < 0.75 && mcPkey>=0" bins_x="bins.pt"/>
+		<Draw name="rcpt_6" data="emb" draw="mcpt" select="mcGeantId==6 && abs(mceta) < 0.5 && rcPkey >= 0 && rcNHitsFit >= 20 && rcDca < 0.75 && mcPkey>=0" bins_x="bins.pt"/>
+
+		<Draw name="rceta_5" data="emb" draw="mceta" select="mcGeantId==5 && abs(mceta) < 0.5 && rcPkey >= 0 && rcNHitsFit >= 20 && rcDca < 0.75 && mcPkey>=0" bins_x="bins.eta"/>
+		<Draw name="rceta_6" data="emb" draw="mceta" select="mcGeantId==6 && abs(mceta) < 0.5 && rcPkey >= 0 && rcNHitsFit >= 20 && rcDca < 0.75 && mcPkey>=0" bins_x="bins.eta"/>
+
+		<Draw name="rcphi_5" data="emb" draw="mcphi" select="mcGeantId==5 && abs(mceta) < 0.5 && rcPkey >= 0 && rcNHitsFit >= 20 && rcDca < 0.75 && mcPkey>=0" bins_x="bins.phi"/>
+		<Draw name="rcphi_6" data="emb" draw="mcphi" select="mcGeantId==6 && abs(mceta) < 0.5 && rcPkey >= 0 && rcNHitsFit >= 20 && rcDca < 0.75 && mcPkey>=0" bins_x="bins.phi"/>
+	</Transform> -->
+
+	<!-- STUDY pt eff bump -->
+	<!-- <Transform>
+
+		<Draw name="rcpt_nhf_5" data="emb" draw="rcNHitsFit : mcpt" select="mcGeantId==5 && abs(mceta) < 0.5 && rcPkey >= 0 && mcPkey>=0" bins_x="bins.pt" bins_y="bins.nhf"/>
+		<Draw name="rcpt_nhf_6" data="emb" draw="rcNHitsFit : mcpt" select="mcGeantId==6 && abs(mceta) < 0.5 && rcPkey >= 0 && mcPkey>=0" bins_x="bins.pt" bins_y="bins.nhf"/>
+
+		<Draw name="rcpt_dca_5" data="emb" draw="rcDca : mcpt" select="mcGeantId==5 && abs(mceta) < 0.5 && rcPkey >= 0 && mcPkey>=0" bins_x="bins.pt" bins_y="bins.dca"/>
+		<Draw name="rcpt_dca_6" data="emb" draw="rcDca : mcpt" select="mcGeantId==6 && abs(mceta) < 0.5 && rcPkey >= 0 && mcPkey>=0" bins_x="bins.pt" bins_y="bins.dca"/>
+
+		<Draw name="mcpt_eta_5" data="emb" draw="mceta : mcpt" select="mcGeantId==5 && mcPkey>=0" bins_x="bins.pt" bins_y="bins.eta"/>
+		<Draw name="mcpt_eta_6" data="emb" draw="mceta : mcpt" select="mcGeantId==6 && mcPkey>=0" bins_x="bins.pt" bins_y="bins.eta"/>
+
+		<Draw name="rcpt_eta_5" data="emb" draw="mceta : mcpt" select="mcGeantId==5 && rcPkey >= 0 && mcPkey>=0" bins_x="bins.pt" bins_y="bins.eta" />
+		<Draw name="rcpt_eta_6" data="emb" draw="mceta : mcpt" select="mcGeantId==6 && rcPkey >= 0 && mcPkey>=0" bins_x="bins.pt" bins_y="bins.eta" />
+	</Transform> -->
+
+	<Transform>
+		<Draw name="mc_5" data="emb" draw=" mcpt : mceta : mcphi" select="mcGeantId==5 && mcPkey>=0" bins_z="bins.pt" bins_y="bins.eta" bins_x="bins.phi" />
+		<Draw name="mc_6" data="emb" draw=" mcpt : mceta : mcphi" select="mcGeantId==6 && mcPkey>=0" bins_z="bins.pt" bins_y="bins.eta" bins_x="bins.phi" />
+
+		<Draw name="rc_5" data="emb" draw=" mcpt : mceta : mcphi" select="mcGeantId==5 && rcPkey >= 0 && mcPkey>=0" bins_z="bins.pt" bins_y="bins.eta" bins_x="bins.phi" />
+		<Draw name="rc_6" data="emb" draw=" mcpt : mceta : mcphi" select="mcGeantId==6 && rcPkey >= 0 && mcPkey>=0" bins_z="bins.pt" bins_y="bins.eta" bins_x="bins.phi" />
+	</Transform>
+
+	<bins>
+		<pt width="0.1" min="0" max="15" />
+		<eta width="0.1" min="-1.0" max="1.0" />
+		<phi width="0.1" min="-3.2" max="3.2" />
+
+		<nhf width="1" min="0" max="50" />
+		<dca width="0.01" min="0" max="5" />
+	</bins>
+
+</config>

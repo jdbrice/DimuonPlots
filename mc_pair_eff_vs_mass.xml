@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d0" url="data/mc_w_mcpt_0.root" />
+	<Data name="d1" url="data/mc_w_mcpt_1.root" />
+	<Data name="d2" url="data/mc_w_mcpt_2.root" />
+	<Data name="d3" url="data/mc_w_mcpt_3.root" />
+	<Data name="dall" url="data/mc_w_mcpt_all.root" />
+
+
+	<Margins>0.05, 0.05, 0.15, 0.15</Margins>
+
+	<Transform states="d0, d1, d2, d3, dall" >
+		<Projection save_as="mtd_{state}_A" name="{state}/mtd_pt_vs_mass" axis="x" y1="0.0" y2="1.0" />
+		<Projection save_as="rc_{state}_A" name="{state}/tpc_pt_vs_mass" axis="x" y1="0.0" y2="1.0" />
+
+		<Projection save_as="mtd_{state}_B" name="{state}/mtd_pt_vs_mass" axis="x" y1="1.0" y2="2.0" />
+		<Projection save_as="rc_{state}_B" name="{state}/tpc_pt_vs_mass" axis="x" y1="1.0" y2="2.0" />
+
+		<Projection save_as="mtd_{state}_C" name="{state}/mtd_pt_vs_mass" axis="x" y1="0.0" y2="2.0" />
+		<Projection save_as="rc_{state}_C" name="{state}/tpc_pt_vs_mass" axis="x" y1="0.0" y2="2.0" />
+
+		<Projection save_as="mtd_{state}_D" name="{state}/mtd_pt_vs_mass" axis="x" y1="2.0" y2="10.0" />
+		<Projection save_as="rc_{state}_D" name="{state}/tpc_pt_vs_mass" axis="x" y1="2.0" y2="10.0" />
+	</Transform>
+
+	<Transform states="d0, d1, d2, d3, dall">
+		<Divide save_as="eff_mtd_{state}_A" nameA="mtd_{state}_A" nameB="rc_{state}_A" />
+		<Divide save_as="eff_mtd_{state}_B" nameA="mtd_{state}_B" nameB="rc_{state}_B" />
+		<Divide save_as="eff_mtd_{state}_C" nameA="mtd_{state}_C" nameB="rc_{state}_C" />
+		<Divide save_as="eff_mtd_{state}_D" nameA="mtd_{state}_D" nameB="rc_{state}_D" />
+	</Transform>
+
+
+	<Plot>
+		<Histo name="rc_dall_A" draw="h" lc="#33F" logy="1" min="1" optstat="0" title="" xtitle="M_{#mu#mu} (GeV/c^{2})" ytitle="dN/dM_{#mu#mu} (GeV/c^{2})^{-1}"/>
+		<Histo name="mtd_dall_A" draw="same h" lc="#000" />
+
+		<TLatex x="0.65" y="0.65" text="0.0 < p_{T}^{#mu#mu} < 1.0" ftp="16" />
+
+		<Legend>
+			<Position pos="top right" w="0.3" />
+			<Entry name="rc_dall_A" title="RC" />
+			<Entry name="mtd_dall_A" title="MTD" />
+		</Legend>
+
+		<Export url="export/MtdSimGun/pair/eff_raw_vs_mass_A.pdf" />
+	</Plot>
+
+
+	<Plot>
+		<Histo name="eff_mtd_dall_A" draw="h" lw="2" lc="#000" optstat="0" min="1" title="" xtitle="M_{#mu#mu} (GeV/c^{2})" logy="1" ytitle="MTD / RC" xr="0, 5" gridx="1" gridy="1"/>
+		<Histo name="eff_mtd_dall_B" draw="same h" lw="2" lc="#F00" />
+		<Histo name="eff_mtd_dall_C" draw="same h" lw="2" lc="#00F" />
+		<Histo name="eff_mtd_dall_D" draw="same h" lw="2" lc="#F0F" />
+		
+		<Legend border_size="0" border_style="0" >
+			<Position pos="bottom right" w="0.3" padding="0.0, 0.05, 0.05, 0.0" />
+			<Entry name="eff_mtd_dall_A" title="0.0 < p_{T} < 1.0 (GeV/c)" />
+			<Entry name="eff_mtd_dall_B" title="1.0 < p_{T} < 2.0 (GeV/c)" />
+			<Entry name="eff_mtd_dall_C" title="0.0 < p_{T} < 2.0 (GeV/c)" />
+			<Entry name="eff_mtd_dall_D" title="2.0 < p_{T} (GeV/c)" />
+		</Legend>
+		<Export url="export/MtdSimGun/pair/eff_vs_mass_A.pdf" />
+	</Plot>
+
+
+</config>

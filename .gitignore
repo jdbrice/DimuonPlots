@@ -1,0 +1,8 @@
+*.root
+*.log
+log
+export
+*.png
+*.pdf
+*.lis
+data

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="ed" treeName="EmbedTree" url="data/embedding_jpsi_muons.root" />
+	<TFile url="export/embedding/qa.root" />
+
+	<Transform>
+		<Draw name="parents" data="ed" draw="mcParentGeantId" select="mcParentGeantId!=0" bins_x="bins.gid" />
+	</Transform>
+
+	<cut mc="abs(mceta) < 0.5 && mcParentGeantId==168" rc="abs(mceta) < 0.5 && mcParentGeantId==168 && rcPkey>=0 && rcNHitsFit >= 20 && rcNHitsDedx > 15 && ((rcNHitsFit*1.0) / rcNHitsPoss) > 0.52"/>
+
+	<Transform>
+		<Draw name="nHitsFit_5" data="ed" draw="rcNHitsFit" select="mcGeantId==5 && {cut:mc} && rcPkey>=0" bins_x="bins.nHits"/>
+		<Draw name="nHitsFit_6" data="ed" draw="rcNHitsFit" select="mcGeantId==6 && {cut:mc} && rcPkey>=0" bins_x="bins.nHits"/>
+
+		<Draw name="nHitsDedx_5" data="ed" draw="rcNHitsDedx" select="mcGeantId==5 && {cut:mc} && rcPkey>=0" bins_x="bins.nHits"/>
+		<Draw name="nHitsDedx_6" data="ed" draw="rcNHitsDedx" select="mcGeantId==6 && {cut:mc} && rcPkey>=0" bins_x="bins.nHits"/>
+
+		<Draw name="nHitsRatio_5" data="ed" draw="(rcNHitsFit*1.0) / rcNHitsPoss" select="mcGeantId==5 && {cut:mc} && rcPkey >= 0" bins_x="bins.nHitsRatio"/>
+		<Draw name="nHitsRatio_6" data="ed" draw="(rcNHitsFit*1.0) / rcNHitsPoss" select="mcGeantId==6 && {cut:mc} && rcPkey >= 0" bins_x="bins.nHitsRatio"/>
+
+		<Draw name="dca_5" data="ed" draw="rcDca" select="mcGeantId==5 && {cut:mc} && rcPkey>=0 " bins_x="bins.dca"/>
+		<Draw name="dca_6" data="ed" draw="rcDca" select="mcGeantId==6 && {cut:mc} && rcPkey>=0 " bins_x="bins.dca"/>
+
+		<Draw name="nspi_5" data="ed" draw="rcNSigmaPi" select="rcPkey >= 0 && mcGeantId==5" bins_x="bins.nSigmaPi"/>
+		<Draw name="nspi_6" data="ed" draw="rcNSigmaPi" select="rcPkey >= 0 && mcGeantId==6" bins_x="bins.nSigmaPi"/>
+	</Transform>
+
+	<Transform>
+		<Draw name="mcpt_5" data="ed" draw="mcpt" select="mcGeantId==5 && {cut:mc}" bins_x="bins.pt"/>
+		<Draw name="mcpt_6" data="ed" draw="mcpt" select="mcGeantId==6 && {cut:mc}" bins_x="bins.pt"/>
+
+		<Draw name="mceta_pt_5" data="ed" draw="mceta : mcpt" select="mcGeantId==5 && {cut:mc}" bins_x="bins.pt" bins_y="bins.eta" />
+		<Draw name="mceta_pt_6" data="ed" draw="mceta : mcpt" select="mcGeantId==6 && {cut:mc}" bins_x="bins.pt" bins_y="bins.eta" />
+
+		<Draw name="mcphi_pt_5" data="ed" draw="mcphi : mcpt" select="mcGeantId==5 && {cut:mc}" bins_x="bins.pt" bins_y="bins.phi" />
+		<Draw name="mcphi_pt_6" data="ed" draw="mcphi : mcpt" select="mcGeantId==6 && {cut:mc}" bins_x="bins.pt" bins_y="bins.phi" />
+
+		<Draw name="mceta_5" data="ed" draw="mceta" select="mcGeantId==5 && {cut:mc}" bins_x="bins.eta"/>
+		<Draw name="mceta_6" data="ed" draw="mceta" select="mcGeantId==6 && {cut:mc}" bins_x="bins.eta"/>
+
+		<Draw name="mcphi_5" data="ed" draw="mcphi" select="mcGeantId==5 && {cut:mc}" bins_x="bins.phi"/>
+		<Draw name="mcphi_6" data="ed" draw="mcphi" select="mcGeantId==6 && {cut:mc}" bins_x="bins.phi"/>
+	</Transform>
+
+	<Transform>
+		<Draw name="rcpt_5" data="ed" draw="mcpt" select="mcGeantId==5 && {cut:rc}" bins_x="bins.pt"/>
+		<Draw name="rcpt_6" data="ed" draw="mcpt" select="mcGeantId==6 && {cut:rc}" bins_x="bins.pt"/>
+
+		<Draw name="rceta_pt_5" data="ed" draw="mceta : mcpt" select="mcGeantId==5 && {cut:rc}" bins_x="bins.pt" bins_y="bins.eta" />
+		<Draw name="rceta_pt_6" data="ed" draw="mceta : mcpt" select="mcGeantId==6 && {cut:rc}" bins_x="bins.pt" bins_y="bins.eta" />
+
+		<Draw name="rcphi_pt_5" data="ed" draw="mcphi : mcpt" select="mcGeantId==5 && {cut:rc}" bins_x="bins.pt" bins_y="bins.phi" />
+		<Draw name="rcphi_pt_6" data="ed" draw="mcphi : mcpt" select="mcGeantId==6 && {cut:rc}" bins_x="bins.pt" bins_y="bins.phi" />
+
+		<Draw name="rceta_5" data="ed" draw="mceta" select="mcGeantId==5 && {cut:rc}" bins_x="bins.eta"/>
+		<Draw name="rceta_6" data="ed" draw="mceta" select="mcGeantId==6 && {cut:rc}" bins_x="bins.eta"/>
+
+		<Draw name="rcphi_5" data="ed" draw="mcphi" select="mcGeantId==5 && {cut:rc}" bins_x="bins.phi"/>
+		<Draw name="rcphi_6" data="ed" draw="mcphi" select="mcGeantId==6 && {cut:rc}" bins_x="bins.phi"/>
+
+		
+	</Transform>
+
+	<titles>
+		<pt x="p_{T}^{MC} (GeV/c)" y="dN/dp_{T}^{MC} (GeV/c)^{-1}" />
+		<eta x="#eta^{MC}" y="dN/d#eta^{#eta}" />
+		<phi x="#phi^{MC}" y="dN/d#phi^{MC}" />
+	</titles>
+
+	<!-- <PlotTemplate names="pt, eta, phi">
+		<Histo name="mc{name}_5" draw="h" title="Geant PID 5" xtitle="@titles.{name}:x" ytitle="@titles.{name}:y" optstat="0" logy="1" min="1" />
+		<Histo name="rc{name}_5" draw="same h" lc="#F00" />
+		<Export url="export/embedding/gid_5_mc_{name}.pdf" />
+	</PlotTemplate>
+
+	<PlotTemplate names="pt, eta, phi">
+		<Histo name="mc{name}_6" draw="h" title="Geant PID 6" xtitle="@titles.{name}:x" ytitle="@titles.{name}:y" optstat="0" logy="1" min="1" />
+		<Histo name="rc{name}_6" draw=" same h" lc="#F00" />
+		<Export url="export/embedding/gid_6_mc_{name}.pdf" />
+	</PlotTemplate> -->
+
+
+	<bins>
+		<gid width="1" min="0" max="200" />
+		<pt width="0.1" min="0" max="15" />
+		<eta width="0.01" min="-1.0" max="1.0" />
+		<phi width="0.01" min="-3.2" max="3.2" />
+
+		<dca width="0.025" min="0" max="5.0" />
+		<nHits width="1" min="0" max="50" />
+		<nHitsRatio width="0.025" min="0" max="1.1" />
+		<nSigmaPi width="0.1" min="-10" max="10" />
+	</bins>
+</config>

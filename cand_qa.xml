@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" url="data/pair_dst_wopt_NN.root" treeName="PairDst" />
+	<TFile url="export/cand/qa.root" />
+
+	<Transform states="d1, d2" >
+		<Draw data="d" name="{state}_mPt" draw="{state}_mPt" select="mChargeSum==0" bins_x="bins.mPt" />
+		<Draw data="d" name="{state}_mEta" draw="{state}_mEta" select="mChargeSum==0" bins_x="bins.mEta" />
+		<Draw data="d" name="{state}_mPhi" draw="{state}_mPhi" select="mChargeSum==0" bins_x="bins.mPhi" />
+
+		<Draw data="d" name="{state}_mNHitsFit" draw="abs({state}_mNHitsFit)" select="mChargeSum==0" bins_x="bins.mNHitsFit" />
+		<Draw data="d" name="{state}_mNHitsMax" draw="{state}_mNHitsMax" select="mChargeSum==0" bins_x="bins.mNHitsMax" />
+		<Draw data="d" name="{state}_mNHitsRatio" draw="abs({state}_mNHitsFit)*1.0 / {state}_mNHitsMax" select="mChargeSum==0" bins_x="bins.mNHitsRatio" />
+		<Draw data="d" name="{state}_mNHitsDedx" draw="{state}_mNHitsDedx" select="mChargeSum==0" bins_x="bins.mNHitsDedx" />
+		<Draw data="d" name="{state}_mNSigmaPion" draw="{state}_mNSigmaPion" select="mChargeSum==0" bins_x="bins.mNSigmaPion" />
+		<Draw data="d" name="{state}_mDCA" draw="{state}_mDCA" select="mChargeSum==0" bins_x="bins.mDCA" />
+		<Draw data="d" name="{state}_mPid" draw="{state}_mPid" select="mChargeSum==0" bins_x="bins.mPid" />
+	</Transform>
+
+	<Transform states="mPt, mEta, mPhi, mNHitsFit, mNHitsDedx, mNHitsMax, mNHitsRatio, mNSigmaPion, mDCA, mPid" >
+		<Add save_as="{state}" nameA="d1_{state}" nameB="d2_{state}" />
+	</Transform>
+
+	<bins>
+		<mPt width="0.05" min="0" max="15.0" />
+		<mEta width="0.01" min="-1" max="1" />
+		<mPhi width="0.01" min="-3.2" max="3.2" />
+		<mNHitsFit width="1" min="0" max="50" />
+		<mNHitsMax width="1" min="0" max="50" />
+		<mNHitsDedx width="1" min="0" max="50" />
+		<mNHitsRatio width="0.025" min="0" max="1.1" />
+		<mNSigmaPion width="0.1" min="-10" max="10" />
+		<mDCA width="0.025" min="0" max="10.0" />
+		<mPid width="0.001" min="-0.5" max="1.2" />
+	</bins>
+</config>
+
+

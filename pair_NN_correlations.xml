@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" treeName="TestTree" url="data/pairNN_trained.root" />
+	<Data name="h"  url="data/pairNN_all.root" />
+	<wd>export/pairNN</wd>
+
+	<Transform>
+		<Draw name="Signal_pair_vs_pid1" data="d" draw=" MLP_ : pid1" select="classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Signal_pair_vs_pid2" data="d" draw=" MLP_ : pid2" select="classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Signal_pair_vs_sum" data="d" draw=" MLP_ : pid1+pid2" select="classID==0" bins_x="bins.pidsum" bins_y="bins.pid" />
+		<Draw name="Signal_pair_vs_r" data="d" draw=" MLP_ : sqrt(pid1*pid1+pid2*pid2)" select="classID==0" bins_x="bins.pidsqrt" bins_y="bins.pid" />
+		<Draw name="Signal_pair_vs_rnl" data="d" draw=" MLP_ : 2.41*(sqrt(pid1*pid1+pid2*pid2)-1)" select="classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Signal_pair_vs_min" data="d" draw=" MLP_ : TMath::Min( pid1, pid2 )" select="classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Signal_pair_vs_max" data="d" draw=" MLP_ : TMath::Max( pid1, pid2 )" select="classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+
+		<Draw name="Background_pair_vs_pid1" data="d" draw=" MLP_ : pid1" select="classID==1" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Background_pair_vs_pid2" data="d" draw=" MLP_ : pid2" select="classID==1" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Background_pair_vs_sum" data="d" draw=" MLP_ : pid1+pid2" select="classID==1" bins_x="bins.pidsum" bins_y="bins.pid" />
+		<Draw name="Background_pair_vs_r" data="d" draw=" MLP_ : sqrt(pid1*pid1+pid2*pid2)" select="classID==1" bins_x="bins.pidsqrt" bins_y="bins.pid" />
+		<Draw name="Background_pair_vs_rnl" data="d" draw=" MLP_ : 2.41*(sqrt(pid1*pid1+pid2*pid2)-1)" select="classID==1" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Background_pair_vs_min" data="d" draw=" MLP_ : TMath::Min( pid1, pid2 )" select="classID==1" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Background_pair_vs_max" data="d" draw=" MLP_ : TMath::Max( pid1, pid2 )" select="classID==1" bins_x="bins.pid" bins_y="bins.pid" />
+
+
+		<Draw name="Signal_and_Background_pair_vs_pid1" data="d" draw=" MLP_ : pid1" select="classID==1 || classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Signal_and_Background_pair_vs_pid2" data="d" draw=" MLP_ : pid2" select="classID==1 || classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Signal_and_Background_pair_vs_sum" data="d" draw=" MLP_ : pid1+pid2" select="classID==1 || classID==0" bins_x="bins.pidsum" bins_y="bins.pid" />
+		<Draw name="Signal_and_Background_pair_vs_r" data="d" draw=" MLP_ : sqrt(pid1*pid1+pid2*pid2)" select="classID==1 || classID==0" bins_x="bins.pidsqrt" bins_y="bins.pid" />
+		<Draw name="Signal_and_Background_pair_vs_rnl" data="d" draw=" MLP_ : 2.41*(sqrt(pid1*pid1+pid2*pid2)-1)" select="classID==1 || classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Signal_and_Background_pair_vs_min" data="d" draw=" MLP_ : TMath::Min( pid1, pid2 )" select="classID==1 || classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+		<Draw name="Signal_and_Background_pair_vs_max" data="d" draw=" MLP_ : TMath::Max( pid1, pid2 )" select="classID==1 || classID==0" bins_x="bins.pid" bins_y="bins.pid" />
+
+	</Transform>
+
+	<TCanvas w="1400" h="1200" />
+	<Margins>0.03, 0.11, 0.11, 0.11</Margins>
+
+	<PlotTemplate names="Signal, Background, Signal_and_Background">
+		<Histo name="{name}_pair_vs_pid1" title="; pid_{1}; pairPid" draw="colz" optstat="0" logz="1" xtp="16" ytp="16" xto="0.8"/>
+		<Export url="{wd}/{name}_pair_vs_pid1.png" /> 
+	</Plot>
+
+	<PlotTemplate names="Signal, Background, Signal_and_Background">
+		<Histo name="{name}_pair_vs_pid2" title="; pid_{2}; pairPid" draw="colz" optstat="0" logz="1" xtp="16" ytp="16" xto="0.8"/>
+		<Export url="{wd}/{name}_pair_vs_pid2.png" /> 
+	</Plot>
+
+	<PlotTemplate names="Signal, Background, Signal_and_Background">
+		<Histo name="{name}_pair_vs_sum" title="; pid_{1}+pid_{2}; pairPid" draw="colz" optstat="0" logz="1" xtp="16" ytp="16" xto="0.8"/>
+		<Export url="{wd}/{name}_pair_vs_sum.png" /> 
+	</Plot>
+
+	<PlotTemplate names="Signal, Background, Signal_and_Background">
+		<Histo name="{name}_pair_vs_r" title="; sqrt(pid_{1}^{2}+pid_{2}^{2}) ; pairPid" draw="colz" optstat="0" logz="1" xtp="16" ytp="16" xto="0.8"/>
+		<Export url="{wd}/{name}_pair_vs_r.png" /> 
+	</Plot>
+
+	<PlotTemplate names="Signal, Background, Signal_and_Background">
+		<Histo name="{name}_pair_vs_rnl" title="; 2.41*(sqrt(pid_{1}^{2}+pid_{2}^{2})-1) ; pairPid" draw="colz" optstat="0" logz="1" xtp="16" ytp="16" xto="0.8"/>
+		<Export url="{wd}/{name}_pair_vs_rnl.png" /> 
+		<TLine p1="-0.05, -0.05" p2="1.05, 1.05" style="1" color="#000" width="3" />
+	</Plot>
+
+	<PlotTemplate names="Signal, Background, Signal_and_Background">
+		<Histo name="{name}_pair_vs_min" title="; min( pid_{1} pid_{2} ) ; pairPid" draw="colz" optstat="0" logz="1" xtp="16" ytp="16" xto="0.8"/>
+		<Export url="{wd}/{name}_pair_vs_min.png" /> 
+	</Plot>
+
+	<PlotTemplate names="Signal, Background, Signal_and_Background">
+		<Histo name="{name}_pair_vs_max" title="; max( pid_{1} pid_{2} ) ; pairPid" draw="colz" optstat="0" logz="1" xtp="16" ytp="16" xto="0.8"/>
+		<Export url="{wd}/{name}_pair_vs_max.png" /> 
+	</Plot>
+
+	<Plot>
+		<Histo name="h/sig" draw="colz" optstat="0" logz="1" title=""/>
+		<Export url="{wd}/sig_pairs.png" />
+	</Plot>
+
+	<!-- <Plot>
+		<Margins>0.05, 0.13, 0.13, 0.13</Margins>
+		<Histo name="h/bg" draw="colz" optstat="0" logz="1" title=""/>
+		<Export url="{wd}/bg_pairs.png" />
+	</Plot> -->
+
+	<Canvas w="1400" h="1200" cols="12" rows="12">
+		<Pad name="test" gx="0, 12" gy="0, 12" m="0.05, 0.13, 0.13, 0.13" >
+			<Histo name="h/sig" draw="colz" optstat="0" logz="1" title="signal+signal"/>
+			<Export url="{wd}/sig_pairs.png" />
+		</Pad>
+	</Canvas>
+
+	<Canvas w="1400" h="1200" cols="12" rows="12">
+		<Pad name="test" gx="0, 12" gy="0, 12" m="0.05, 0.13, 0.13, 0.13" >
+			<Histo name="h/bg" draw="colz" optstat="0" logz="1" title="bg+bg"/>
+			<Export url="{wd}/bg_pairs.png" />
+		</Pad>
+	</Canvas>
+
+	<Canvas w="1400" h="1200" cols="12" rows="12">
+		<Pad name="test" gx="0, 12" gy="0, 12" m="0.05, 0.13, 0.13, 0.13" >
+			<Histo name="h/mixed" draw="colz" optstat="0" logz="1" title="signal+bg (mixed)"/>
+			<Export url="{wd}/mixed_pairs.png" />
+		</Pad>
+	</Canvas>
+
+
+	<bins>
+		<pid width="0.01" min="-0.05" max="1.05" />
+		<pidsum width="0.01" min="-0.05" max="2.5" />
+		<pidsqrt width="0.01" min="-0.05" max="1.5" />
+	</bins>
+
+</config>

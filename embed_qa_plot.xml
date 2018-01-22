@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="ed" url="export/embedding/qa.root" />
+	<wd>export/embedding</wd>
+
+	<titles>
+		<pt x="p_{T}^{MC} (GeV/c)" y="dN/dp_{T}^{MC} (GeV/c)^{-1}" />
+		<eta x="#eta^{MC}" y="dN/d#eta^{MC}" />
+		<phi x="#phi^{MC}" y="dN/d#phi^{MC}" />
+	</titles>
+
+	<Margins>0.015, 0.04, 0.13, 0.13</Margins>
+
+	<PlotTemplate names="pt, eta, phi">
+		<Histo name="mc{name}_5" draw="h" title="Geant PID 5 (#mu^{+})" xtitle="@titles.{name}:x" ytitle="@titles.{name}:y" optstat="0" logy="1" min="1e1" xlp="14" xtp="18" ytp="18" ylp="14" />
+		<Histo name="rc{name}_5" draw="same h" lc="#F00" />
+		<Export url="{wd}/gid_5_mc_{name}.pdf" />
+
+		<Legend fill_style="0" fill_color="0" border_size="0" >
+			<Position pos="bottom right" w="0.3" padding="0.0, 0.05, 0.05, 0.0" />
+			<Entry name="mc{name}_5" title="MC" />
+			<Entry name="rc{name}_5" title="RC" />
+		</Legend>
+
+	</PlotTemplate>
+
+	<PlotTemplate names="pt, eta, phi">
+		<Histo name="mc{name}_6" draw="h" title="Geant PID 6 (#mu^{-})" xtitle="@titles.{name}:x" ytitle="@titles.{name}:y" optstat="0" logy="1" min="1e1" xlp="14" xtp="18" ytp="18" ylp="14" />
+		<Histo name="rc{name}_6" draw=" same h" lc="#F00" />
+		<Export url="{wd}/gid_6_mc_{name}.pdf" />
+
+		<Legend fill_style="0" fill_color="0" border_size="0" >
+			<Position pos="bottom right" w="0.3" padding="0.0, 0.05, 0.05, 0.0" />
+			<Entry name="mc{name}_6" title="MC" />
+			<Entry name="rc{name}_6" title="RC" />
+		</Legend>
+
+	</PlotTemplate>
+
+	<Plot>
+		<Histo name="parents" draw="" logy="1" optstat="0" title="Parents of MC muons; GEANT Id; dN/dGEANT Id" />
+		<Export url="{wd}/muon_parents.pdf" />
+	</Plot>
+
+	<PlotTemplate names="nHitsFit, nHitsDedx, nHitsRatio" >
+		<Histo name="{name}_5" title="#mu^{+}; nHitsFit; dN/dnHitsFit" optstat="0" logy="0" />
+		<Export url="{wd}/{name}_5.pdf" />
+	</PlotTemplate>
+	<PlotTemplate names="nHitsFit, nHitsDedx, nHitsRatio" >
+		<Histo name="{name}_6" title="#mu^{+}; nHitsFit; dN/dnHitsFit" optstat="0" logy="0" />
+		<Export url="{wd}/{name}_6.pdf" />
+	</PlotTemplate>
+
+
+	<bins>
+		<pt width="0.1" min="0" max="15" />
+		<eta width="0.01" min="-1.0" max="1.0" />
+		<phi width="0.01" min="-3.2" max="3.2" />
+
+		<dca width="0.01" min="0" max="5.0" />
+		<nHits width="1" min="0" max="50" />
+		<nHitsRatio wisth="0.05" min="0" max="1.1" />
+		<nSigmaPi width="0.01" min="-5" max="5" />
+	</bins>
+</config>

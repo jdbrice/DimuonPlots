@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<Log url="debug.log" />
+	<Data name="d" treeName="PairNN" url="data/pairNN_Combined.root" />
+	<!-- 
+		Signal     = 0
+		Background = 1
+		Mixed      = 2
+	 -->
+	<Transform states="0, 1, 2">
+		<Draw data="d" name="h{state}" draw="pairPid" select="classId=={state}" bins_x="bins.pid" />
+	</Transform>
+
+
+	<Transform>
+		<Add save_as="hsum" names="h0, h2, h1" />
+	</Transform>
+
+
+	<Margins>0.05, 0.05, 0.1, 0.1</Margins>
+	<Plot>
+		<Axes lsx="-0.05, 1.05, 50" lsy="1e2, 600e3, 100" optstat="0" title="Pair NN response" xtitle="NN response" ytitle="dN/d(NN response)" logy="1" />
+		
+		<Histo name="h0" draw="same h" fca="blue, 0.2" lc="blue" lw="2" gridx="1" />
+
+		<Histo name="h1" draw="same h" fca="red, 0.2" lc="red" lw="2"/>
+		<Histo name="h2" draw="same h" fca="#4DAF4A, 0.2" lc="#4DAF4A" lw="2"/>
+		
+		<!-- <Histo name="hsum" draw="same h" fca="#000, 0.0" lc="#000" lw="2"/> -->
+
+		<Export url="export/pairNN/multiclass.pdf" />
+
+		<TLatex x="0.25" y="0.15" text="N_{signal} = N_{bg} = N_{mixed}" fp="12" />
+
+		<Legend border_size="0" fill_style="0" columns="1">
+			<Position pos="top hcenter" padding="0.01, 0, 0, 0" w="0.4" h="0.3"/>
+			<Entry name="h0" title="signal+signal" />
+			<Entry name="h1" title="bg+bg" />
+			<Entry name="h2" title="signal+bg (mixed)" />
+		</Legend>
+	</Plot>
+
+
+	<bins>
+		<pid width="0.005" min="-0.05" max="1.05" />
+	</bins>
+
+</root>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="dall" url="data/mc_w_mcpt_all.root" />
+	<TFile url="export/MtdSimGun/rebinned_eff_tables.root" />
+	
+	<title>
+		<pt>p_{T}^{MC} (GeV/c)</pt>
+		<eta>#eta^{MC}</eta>
+		<phi>#phi^{MC}</phi>
+	</title>
+
+	<Margins>0.05, 0.1, 0.13, 0.13</Margins>
+	<TCanvas width="1600" height="1200" />
+
+	<Transform states="pos, neg">
+		<Rebin save_as="{state}_rc_rb" name="{state}_rc" bins_x="bins.phi" bins_y="bins.eta" bins_z="bins.pt" />
+		<Rebin save_as="{state}_mtd_rb" name="{state}_mtd" bins_x="bins.phi" bins_y="bins.eta" bins_z="bins.pt" />
+	</Transform>
+
+	<Transform states="pos, neg">
+		<!-- phi vs. pt -->
+		<Projection save_as="{state}_rc_phi_pt" name="{state}_rc_rb" axis="xz" y1="-0.5" y2="0.5" /> 
+		<Style name="{state}_rc_phi_pt" title="RC" xtitle="@title.pt" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_pt" name="{state}_mtd_rb" axis="xz" y1="-0.5" y2="0.5" />
+		<Style name="{state}_mtd_phi_pt" title="MTD" xtitle="@title.pt" ytitle="@title.phi" />
+
+		<Projection save_as="{state}_rc_phi_pt_n0p5_eta_n0p4" name="{state}_rc_rb" axis="xz" y1="-0.5" y2="-0.4" /> 
+		<Style name="{state}_rc_phi_pt_n0p5_eta_n0p4" title="RC" xtitle="@title.pt" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_pt_n0p5_eta_n0p4" name="{state}_mtd_rb" axis="xz" y1="-0.5" y2="-0.4" />
+		<Style name="{state}_mtd_phi_pt_n0p5_eta_n0p4" title="MTD" xtitle="@title.pt" ytitle="@title.phi" />
+
+		<Projection save_as="{state}_rc_phi_pt_n0p4_eta_n0p3" name="{state}_rc_rb" axis="xz" y1="-0.4" y2="-0.3" /> 
+		<Style name="{state}_rc_phi_pt_n0p4_eta_n0p3" title="RC" xtitle="@title.pt" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_pt_n0p4_eta_n0p3" name="{state}_mtd_rb" axis="xz" y1="-0.4" y2="-0.3" />
+		<Style name="{state}_mtd_phi_pt_n0p4_eta_n0p3" title="MTD" xtitle="@title.pt" ytitle="@title.phi" />
+
+		<Projection save_as="{state}_rc_phi_pt_n0p3_eta_n0p2" name="{state}_rc_rb" axis="xz" y1="-0.3" y2="-0.2" /> 
+		<Style name="{state}_rc_phi_pt_n0p3_eta_n0p2" title="RC" xtitle="@title.pt" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_pt_n0p3_eta_n0p2" name="{state}_mtd_rb" axis="xz" y1="-0.3" y2="-0.2" />
+		<Style name="{state}_mtd_phi_pt_n0p3_eta_n0p2" title="MTD" xtitle="@title.pt" ytitle="@title.phi" />
+
+		<Projection save_as="{state}_rc_phi_pt_n0p2_eta_n0p1" name="{state}_rc_rb" axis="xz" y1="-0.2" y2="-0.1" /> 
+		<Style name="{state}_rc_phi_pt_n0p2_eta_n0p1" title="RC" xtitle="@title.pt" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_pt_n0p2_eta_n0p1" name="{state}_mtd_rb" axis="xz" y1="-0.2" y2="-0.1" />
+		<Style name="{state}_mtd_phi_pt_n0p2_eta_n0p1" title="MTD" xtitle="@title.pt" ytitle="@title.phi" />
+
+		<Projection save_as="{state}_rc_phi_pt_n0p1_eta_0p1" name="{state}_rc_rb" axis="xz" y1="-0.1" y2="0.1" /> 
+		<Style name="{state}_rc_phi_pt_n0p1_eta_0p1" title="RC" xtitle="@title.pt" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_pt_n0p1_eta_0p1" name="{state}_mtd_rb" axis="xz" y1="-0.1" y2="0.1" />
+		<Style name="{state}_mtd_phi_pt_n0p1_eta_0p1" title="MTD" xtitle="@title.pt" ytitle="@title.phi" />
+
+		<Projection save_as="{state}_rc_phi_pt_0p1_eta_0p3" name="{state}_rc_rb" axis="xz" y1="0.1" y2="0.3" /> 
+		<Style name="{state}_rc_phi_pt_0p1_eta_0p3" title="RC" xtitle="@title.pt" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_pt_0p1_eta_0p3" name="{state}_mtd_rb" axis="xz" y1="0.1" y2="0.3" />
+		<Style name="{state}_mtd_phi_pt_0p1_eta_0p3" title="MTD" xtitle="@title.pt" ytitle="@title.phi" />
+
+		<Projection save_as="{state}_rc_phi_pt_0p3_eta_0p5" name="{state}_rc_rb" axis="xz" y1="0.3" y2="0.5" /> 
+		<Style name="{state}_rc_phi_pt_0p3_eta_0p5" title="RC" xtitle="@title.pt" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_pt_0p3_eta_0p5" name="{state}_mtd_rb" axis="xz" y1="0.3" y2="0.5" />
+		<Style name="{state}_mtd_phi_pt_0p3_eta_0p5" title="MTD" xtitle="@title.pt" ytitle="@title.phi" />
+
+		<!-- eta vs. pt -->
+		<Projection save_as="{state}_rc_eta_pt" name="{state}_rc_rb" axis="yz" x1="-3.2" x2="3.2" /> 
+		<Style name="{state}_rc_eta_pt" title="RC" xtitle="@title.pt" ytitle="@title.eta" />
+		<Projection save_as="{state}_mtd_eta_pt" name="{state}_mtd_rb" axis="yz" x1="-3.2" x2="3.2" />
+		<Style name="{state}_mtd_eta_pt" title="MTD" xtitle="@title.pt" ytitle="@title.eta" />
+
+		<!-- phi vs. eta -->
+		<Projection save_as="{state}_rc_phi_eta" name="{state}_rc_rb" axis="xy" z1="0.0" z2="10" /> 
+		<Style name="{state}_rc_phi_eta" title="RC" xtitle="@title.eta" ytitle="@title.phi" />
+		<Projection save_as="{state}_mtd_phi_eta" name="{state}_mtd_rb" axis="xy" z1="0.0" z2="10" />
+		<Style name="{state}_mtd_phi_eta" title="MTD" xtitle="@title.eta" ytitle="@title.phi" />
+	</Transform>
+
+	<Transform states="pos, neg" >
+		<Divide save_as="{state}_eff" nameA="{state}_mtd_rb" nameB="{state}_rc_rb" />
+
+		<Divide save_as="{state}_eff_phi_pt" nameA="{state}_mtd_phi_pt" nameB="{state}_rc_phi_pt" />
+		<Divide save_as="{state}_eff_eta_pt" nameA="{state}_mtd_eta_pt" nameB="{state}_rc_eta_pt" />
+		<Divide save_as="{state}_eff_phi_eta" nameA="{state}_mtd_phi_eta" nameB="{state}_rc_phi_eta" />
+
+		<!-- <Style name="{state}_eff_phi_pt" xtitle="@title.pt" ytitle="@title.phi" />
+		<Style name="{state}_eff_eta_pt" xtitle="@title.pt" ytitle="@title.eta" />
+		<Style name="{state}_eff_phi_eta" xtitle="@title.eta" ytitle="@title.phi" /> -->
+
+		<Divide save_as="{state}_eff_phi_pt_n0p5_eta_n0p4" nameA="{state}_mtd_phi_pt_n0p5_eta_n0p4" nameB="{state}_rc_phi_pt_n0p5_eta_n0p4" />
+		<Divide save_as="{state}_eff_phi_pt_n0p4_eta_n0p3" nameA="{state}_mtd_phi_pt_n0p4_eta_n0p3" nameB="{state}_rc_phi_pt_n0p4_eta_n0p3" />
+		<Divide save_as="{state}_eff_phi_pt_n0p3_eta_n0p2" nameA="{state}_mtd_phi_pt_n0p3_eta_n0p2" nameB="{state}_rc_phi_pt_n0p3_eta_n0p2" />
+		<Divide save_as="{state}_eff_phi_pt_n0p2_eta_n0p1" nameA="{state}_mtd_phi_pt_n0p2_eta_n0p1" nameB="{state}_rc_phi_pt_n0p2_eta_n0p1" />
+		<Divide save_as="{state}_eff_phi_pt_n0p1_eta_n0p1" nameA="{state}_mtd_phi_pt_n0p1_eta_n0p1" nameB="{state}_rc_phi_pt_n0p1_eta_n0p1" />
+		<Divide save_as="{state}_eff_phi_pt_n0p1_eta_0p1" nameA="{state}_mtd_phi_pt_n0p1_eta_0p1" nameB="{state}_rc_phi_pt_n0p1_eta_0p1" />
+		<Divide save_as="{state}_eff_phi_pt_0p1_eta_0p3" nameA="{state}_mtd_phi_pt_0p1_eta_0p3" nameB="{state}_rc_phi_pt_0p1_eta_0p3" />
+		<Divide save_as="{state}_eff_phi_pt_0p3_eta_0p5" nameA="{state}_mtd_phi_pt_0p3_eta_0p5" nameB="{state}_rc_phi_pt_0p3_eta_0p5" />
+
+		<!-- <Style name="{state}_eff_phi_pt_n0p5_eta_n0p4" xtitle="@title.pt" ytitle="@title.phi" />
+		<Style name="{state}_eff_phi_pt_n0p4_eta_n0p3" xtitle="@title.pt" ytitle="@title.phi" />
+		<Style name="{state}_eff_phi_pt_n0p3_eta_n0p2" xtitle="@title.pt" ytitle="@title.phi" />
+		<Style name="{state}_eff_phi_pt_n0p2_eta_n0p1" xtitle="@title.pt" ytitle="@title.phi" />
+		<Style name="{state}_eff_phi_pt_n0p1_eta_n0p1" xtitle="@title.pt" ytitle="@title.phi" />
+		<Style name="{state}_eff_phi_pt_n0p1_eta_0p1" xtitle="@title.pt" ytitle="@title.phi" />
+		<Style name="{state}_eff_phi_pt_0p1_eta_0p3" xtitle="@title.pt" ytitle="@title.phi" />
+		<Style name="{state}_eff_phi_pt_0p3_eta_0p5" xtitle="@title.pt" ytitle="@title.phi" /> -->
+
+
+	</Transform>
+
+	<PlotTemplate names="phi_pt, eta_pt, phi_eta, phi_pt_n0p5_eta_n0p4, phi_pt_n0p4_eta_n0p3, phi_pt_n0p3_eta_n0p2, phi_pt_n0p2_eta_n0p1, phi_pt_n0p1_eta_0p1, phi_pt_0p1_eta_0p3, phi_pt_0p3_eta_0p5">
+		<Histo name="pos_eff_{name}" draw="colz" optstat="0" title="#mu^{+}: MTD / RC" />
+		<Export url="export/MtdSimGun/mtd_eff_pos_{name}.png" />
+	</Plot>
+
+	<PlotTemplate names="phi_pt, eta_pt, phi_eta, phi_pt_n0p5_eta_n0p4, phi_pt_n0p4_eta_n0p3, phi_pt_n0p3_eta_n0p2, phi_pt_n0p2_eta_n0p1, phi_pt_n0p1_eta_0p1, phi_pt_0p1_eta_0p3, phi_pt_0p3_eta_0p5">
+		<Histo name="neg_eff_{name}" draw="colz" optstat="0" title="#mu^{-}: MTD / RC" />
+		<Export url="export/MtdSimGun/mtd_eff_neg_{name}.png" />
+	</Plot>
+	<bins>
+		<pt> 0.0, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75, 5.0, 6.0, 7.0, 8.0, 15.0 </pt>
+		<eta width="0.05" min="-0.5" max="0.5" />
+		<phi width="0.025" min="-3.2" max="3.2" />
+
+	</bins>
+
+	<!-- , phi_pt_n0p5_eta_n0p4, phi_pt_n0p4_eta_n0p3, phi_pt_n0p3_eta_n0p2, phi_pt_n0p2_eta_n0p1, phi_pt_n0p1_eta_0p1, phi_pt_0p1_eta_0p3, phi_pt_0p3_eta_0p5 -->
+
+
+</config>

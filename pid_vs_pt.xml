@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" treeName="MvaTree" url="data/pidNN.lis" />
+	<TFile url="export/pid/pdfs.root" />
+
+	<Transform>
+		<Draw data="d" name="sig_pos_pT" draw="mlp : pt" select="c==1 && classId==5" bins_x="bins.pt" bins_y="bins.pid" />
+		<Draw data="d" name="sig_neg_pT" draw="mlp : pt" select="c==-1 && classId==5" bins_x="bins.pt" bins_y="bins.pid" />
+
+		<Draw data="d" name="bg_pos_pT" draw="mlp : pt" select="c==1 && (classId==0 || classId==2)" bins_x="bins.pt" bins_y="bins.pid" />
+		<Draw data="d" name="bg_neg_pT" draw="mlp : pt" select="c==-1 && (classId==0 || classId==2)" bins_x="bins.pt" bins_y="bins.pid" />
+	</Transform>
+
+	<bins>
+		<pid width="0.01" min="-0.5" max="1.2" />
+		<pt width="0.05" min="0" max="15" />
+	</bins>
+
+</config>

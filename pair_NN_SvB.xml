@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <mod></mod>
+    <Data name="d" url="data/pairNN_trained.root"/>
+
+    <Method>MLP</Method>
+
+    <wd>export/pairNN</wd>
+
+    <bins>
+        <mlp width="0.01" min="-0.05" max="1.5" />
+    </bins>
+
+    <LS>d/Method_{Method}/{Method}_{mod}/MVA_{Method}_{mod}_S_high</LS>
+    <LB>d/Method_{Method}/{Method}_{mod}/MVA_{Method}_{mod}_B_high</LB>
+
+    <EffS>d/Method_{Method}/{Method}_{mod}/MVA_{Method}_{mod}_effS</EffS>
+    <EffB>d/Method_{Method}/{Method}_{mod}/MVA_{Method}_{mod}_effB</EffB>
+
+    <rejB>d/Method_{Method}/{Method}_{mod}/MVA_{Method}_{mod}_rejBvsS</rejB>
+
+    <TFile url="plots.root" />
+    <Transform>
+        <CDF save_as="cdfS" name="{LS}" forward="false"/>
+        <CDF save_as="cdfB" name="{LB}" forward="false"/>
+    </Transform>
+    <Transform>
+        <Add save_as="cdfSum" nameA="cdfS" nameB="cdfB" />
+    </Transform>
+    <Transform>
+        <Divide save_as="Purity" nameA="cdfS" nameB="cdfSum"/>
+    </Transform>
+
+    <Transform>
+        <Rebin save_as="LS" name="{LS}" bins_x="bins.mlp" />
+        <Rebin save_as="LB" name="{LB}" bins_x="bins.mlp" />
+    </Transform>
+
+    <Margins>0.02, 0.01, 0.12, 0.1</Margins>
+
+    <XRange>
+        <MLP>-0.2, 1.05</MLP>
+    </XRange>
+
+    <Plot>
+        <TLatex text="Method: {Method}" x="0.2" y="0.91" size="0.05"/>
+        <TLatex text="Description: N+5,N+5" x="0.2" y="0.88" point="12"/>
+        <Histo name="LS">
+            <style draw="h" fca="blue, 0.6" lc="blue" lw="2" xr="@XRange.{Method}" logy="1" title=";MLP" optstat="0" max="1e4"/>
+        </Histo>
+
+        <Histo name="LB">
+            <style draw="h same" lc="red" fca="red, 0.6" lw="2"/>
+        </Histo>
+
+        <Legend border_size="0">
+            <Position pos="top right" w="0.25" h="0.1" padding="0.01, 0.25, 0.0, 0.05"/>
+            <Entry name="LS" title="Signal"/>
+            <Entry name="LB" title="Background"/>
+        </Legend>
+
+        <Export url="{wd}/SvsB_{Method}.pdf"/>
+    </Plot>
+
+
+
+    <Plot>
+        <Histo name="{rejB}" >
+            <style draw="h" lw="2" lc="#000000" xr="0, 1.0" yr="0.0, 1.1" />
+        </Histo>
+        
+        
+        <TLine x="0, 1.0" y="0.1, 0.1" color="#000000"/>
+        <TLine x="0, 1.0" y="0.2, 0.2" color="#000000"/>
+        <TLine x="0, 1.0" y="0.3, 0.3" color="#000000"/>
+        <TLine x="0, 1.0" y="0.4, 0.4" color="#000000"/>
+        <TLine x="0, 1.0" y="0.5, 0.5" color="#000000"/>
+        <TLine x="0, 1.0" y="0.6, 0.6" color="#000000"/>
+        <TLine x="0, 1.0" y="0.7, 0.7" color="#000000"/>
+        <TLine x="0, 1.0" y="0.8, 0.8" color="#000000"/>
+        <TLine x="0, 1.0" y="0.9, 0.9" color="#000000"/>
+
+        <TLine y="0, 1.1" x="0.1, 0.1" color="#000000"/>
+        <TLine y="0, 1.1" x="0.2, 0.2" color="#000000"/>
+        <TLine y="0, 1.1" x="0.3, 0.3" color="#000000"/>
+        <TLine y="0, 1.1" x="0.4, 0.4" color="#000000"/>
+        <TLine y="0, 1.1" x="0.5, 0.5" color="#000000"/>
+        <TLine y="0, 1.1" x="0.6, 0.6" color="#000000"/>
+        <TLine y="0, 1.1" x="0.7, 0.7" color="#000000"/>
+        <TLine y="0, 1.1" x="0.8, 0.8" color="#000000"/>
+        <TLine y="0, 1.1" x="0.9, 0.9" color="#000000"/>
+
+        <Export url="{wd}/RejectBvsS_{Method}.pdf"/>
+    </Plot>
+
+</root>

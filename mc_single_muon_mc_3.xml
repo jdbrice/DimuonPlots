@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" url="data/mc_3.root" />
+
+	<Margins>0.05, 0.05, 0.13, 0.13</Margins>
+
+	<Plot>
+		<Axes lsx="0, 10, 1" lsy="1, 1e6, 100" logy="1" optstat="0" xtitle="p_{T}^{MC} (GeV/c)" ytitle="dN/dp_{T}^{MC} (GeV/c)^{-1}" />
+		<Histo name="mc_p_mPt" draw="same h" linecolor="#F00" optstat="0"  />
+		<Histo name="tpc_p_mPt" draw="same h" linecolor="#00F" optstat="0"  />
+		<Histo name="mtd_p_mPt" draw="same h" linecolor="#000" optstat="0"  />
+
+		<TLatex x="0.4" y="0.9" text="Positive Muons" ftp="18" />
+
+		<Export url="export/mc_single_muon_pos_mPt_3.pdf" />
+
+		<Legend>
+			<Position pos="top right" w="0.2" />
+			<Entry name="mc_p_mPt" title="MC" />
+			<Entry name="tpc_p_mPt" title="RC" />
+			<Entry name="mtd_p_mPt" title="MTD" />
+		</Legend>
+	</Plot>
+
+
+	<Plot>
+		<Axes lsx="-0.6, 0.6, 1" lsy="1, 5e5, 100" logy="1" optstat="0" xtitle="#eta^{MC}" ytitle="dN/d#eta^{MC}" />
+		<Histo name="mc_p_mEta" draw="same h" linecolor="#F00" optstat="0"  />
+		<Histo name="tpc_p_mEta" draw="same h" linecolor="#00F" optstat="0"  />
+		<Histo name="mtd_p_mEta" draw="same h" linecolor="#000" optstat="0"  />
+
+		<Export url="export/mc_single_muon_pos_mEta_3.pdf" />
+
+		<TLatex x="0.4" y="0.9" text="Positive Muons" ftp="18" />
+
+		<Legend>
+			<Position pos="bottom right" w="0.2" padding="0.0, 0.1, 0.05, 0.0" />
+			<Entry name="mc_p_mEta" title="MC" />
+			<Entry name="tpc_p_mEta" title="RC" />
+			<Entry name="mtd_p_mEta" title="MTD" />
+		</Legend>
+	</Plot>
+
+	<Plot>
+		<Axes lsx="-3.4, 3.4, 1" lsy="1, 5e4, 100" logy="1" optstat="0" xtitle="#phi^{MC}" ytitle="dN/d#phi^{MC}" />
+		<Histo name="mc_p_mPhi" draw="same h" linecolor="#F00" optstat="0"  />
+		<Histo name="tpc_p_mPhi" draw="same h" linecolor="#00F" optstat="0"  />
+		<Histo name="mtd_p_mPhi" draw="same h" linecolor="#000" optstat="0"  />
+
+		<Export url="export/mc_single_muon_pos_mPhi_3.pdf" />
+
+		<TLatex x="0.4" y="0.9" text="Positive Muons" ftp="18" />
+
+		<Legend>
+			<Position pos="bottom right" w="0.2" padding="0.0, 0.1, 0.05, 0.0" />
+			<Entry name="mc_p_mPhi" title="MC" />
+			<Entry name="tpc_p_mPhi" title="RC" />
+			<Entry name="mtd_p_mPhi" title="MTD" />
+		</Legend>
+	</Plot>
+
+
+	<Plot>
+		<Axes lsx="0, 10, 1" lsy="1, 1e6, 100" logy="1" optstat="0" xtitle="p_{T}^{MC} (GeV/c)" ytitle="dN/dp_{T}^{MC} (GeV/c)^{-1}" />
+		<Histo name="mc_m_mPt" draw="same h" linecolor="#F00" optstat="0"  />
+		<Histo name="tpc_m_mPt" draw="same h" linecolor="#00F" optstat="0"  />
+		<Histo name="mtd_m_mPt" draw="same h" linecolor="#000" optstat="0"  />
+
+		<TLatex x="0.4" y="0.9" text="Negative Muons" ftp="18" />
+
+		<Export url="export/mc_single_muon_neg_mPt_3.pdf" />
+
+		<Legend>
+			<Position pos="top right" w="0.2" />
+			<Entry name="mc_m_mPt" title="MC" />
+			<Entry name="tpc_m_mPt" title="RC" />
+			<Entry name="mtd_m_mPt" title="MTD" />
+		</Legend>
+	</Plot>
+
+
+	<Plot>
+		<Axes lsx="-0.6, 0.6, 1" lsy="1, 5e5, 100" logy="1" optstat="0" xtitle="#eta^{MC}" ytitle="dN/d#eta^{MC}" />
+		<Histo name="mc_m_mEta" draw="same h" linecolor="#F00" optstat="0"  />
+		<Histo name="tpc_m_mEta" draw="same h" linecolor="#00F" optstat="0"  />
+		<Histo name="mtd_m_mEta" draw="same h" linecolor="#000" optstat="0"  />
+
+		<Export url="export/mc_single_muon_neg_mEta_3.pdf" />
+
+		<TLatex x="0.4" y="0.9" text="Negative Muons" ftp="18" />
+
+		<Legend>
+			<Position pos="bottom right" w="0.2" padding="0.0, 0.1, 0.05, 0.0" />
+			<Entry name="mc_m_mEta" title="MC" />
+			<Entry name="tpc_m_mEta" title="RC" />
+			<Entry name="mtd_m_mEta" title="MTD" />
+		</Legend>
+	</Plot>
+
+	<Plot>
+		<Axes lsx="-3.4, 3.4, 1" lsy="1, 5e4, 100" logy="1" optstat="0" xtitle="#phi^{MC}" ytitle="dN/d#phi^{MC}" />
+		<Histo name="mc_m_mPhi" draw="same h" linecolor="#F00" optstat="0"  />
+		<Histo name="tpc_m_mPhi" draw="same h" linecolor="#00F" optstat="0"  />
+		<Histo name="mtd_m_mPhi" draw="same h" linecolor="#000" optstat="0"  />
+
+		<Export url="export/mc_single_muon_neg_mPhi_3.pdf" />
+
+		<TLatex x="0.4" y="0.9" text="Negative Muons" ftp="18" />
+
+		<Legend>
+			<Position pos="bottom right" w="0.2" padding="0.0, 0.1, 0.05, 0.0" />
+			<Entry name="mc_m_mPhi" title="MC" />
+			<Entry name="tpc_m_mPhi" title="RC" />
+			<Entry name="mtd_m_mPhi" title="MTD" />
+		</Legend>
+	</Plot>
+
+
+</config>

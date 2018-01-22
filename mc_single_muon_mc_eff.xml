@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<idx>all</idx>
+	<Data name="d{idx}" url="data/mc_w_mcpt_{idx}.root" />
+
+	<Margins>0.05, 0.05, 0.13, 0.13</Margins>
+
+	<Transform states="mPt, mEta, mPhi">
+		<Divide save_as="eff_pos_tpc_by_mc_{state}" nameA="tpc_p_{state}" nameB="mc_p_{state}" />
+		<Divide save_as="eff_pos_mtd_by_mc_{state}" nameA="mtd_p_{state}" nameB="mc_p_{state}" />
+		<Divide save_as="eff_pos_mtd_by_tpc_{state}" nameA="mtd_p_{state}" nameB="tpc_p_{state}" />
+
+		<Divide save_as="eff_neg_tpc_by_mc_{state}" nameA="tpc_m_{state}" nameB="mc_m_{state}" />
+		<Divide save_as="eff_neg_mtd_by_mc_{state}" nameA="mtd_m_{state}" nameB="mc_m_{state}" />
+		<Divide save_as="eff_neg_mtd_by_tpc_{state}" nameA="mtd_m_{state}" nameB="tpc_m_{state}" />
+	</Transform>
+
+	<Transform states="mPt, mEta, mPhi">
+		<Rebin save_as="rb_mc_p_{state}" name="mc_p_{state}" bins_x="bins.{state}" />
+		<Rebin save_as="rb_tpc_p_{state}" name="tpc_p_{state}" bins_x="bins.{state}" />
+		<Rebin save_as="rb_mtd_p_{state}" name="mtd_p_{state}" bins_x="bins.{state}" />
+
+		<Rebin save_as="rb_mc_m_{state}" name="mc_m_{state}" bins_x="bins.{state}" />
+		<Rebin save_as="rb_tpc_m_{state}" name="tpc_m_{state}" bins_x="bins.{state}" />
+		<Rebin save_as="rb_mtd_m_{state}" name="mtd_m_{state}" bins_x="bins.{state}" />
+	</Transform>
+
+	<Transform states="mPt, mEta, mPhi">
+		<Divide save_as="eff_pos_rb_tpc_by_mc_{state}" nameA="rb_tpc_p_{state}" nameB="rb_mc_p_{state}" />
+		<Divide save_as="eff_pos_rb_mtd_by_mc_{state}" nameA="rb_mtd_p_{state}" nameB="rb_mc_p_{state}" />
+		<Divide save_as="eff_pos_rb_mtd_by_tpc_{state}" nameA="rb_mtd_p_{state}" nameB="rb_tpc_p_{state}" />
+
+		<Divide save_as="eff_neg_rb_tpc_by_mc_{state}" nameA="rb_tpc_m_{state}" nameB="rb_mc_m_{state}" />
+		<Divide save_as="eff_neg_rb_mtd_by_mc_{state}" nameA="rb_mtd_m_{state}" nameB="rb_mc_m_{state}" />
+		<Divide save_as="eff_neg_rb_mtd_by_tpc_{state}" nameA="rb_mtd_m_{state}" nameB="rb_tpc_m_{state}" />
+	</Transform>
+
+
+
+	<xtitle>
+		<mPt>p_{T}^{MC} (GeV/c)</mPt>
+		<mEta>#eta^{MC}</mEta>
+		<mPhi>#phi^{MC}</mPhi>
+	</xtitle>
+
+	<PlotTemplate names="mPt, mEta, mPhi" >
+		<Histo name="eff_pos_tpc_by_mc_{name}" draw="hp" lc="#F00" mc="#F00" optstat="0" logy="0" min="0" max="1.2" title="" gridy="1" xtitle="@xtitle.{name}" lw="2" />
+		<Histo name="eff_pos_mtd_by_mc_{name}" draw="same hp" lc="#000" mc="#000" lw="2" />
+		<Histo name="eff_pos_mtd_by_tpc_{name}" draw="same hp" lc="#33F" mc="#33F" lw="2" />
+
+		<TLatex x="0.4" y="0.9" text="Positive Muons" ftp="18" />
+		<Export url="export/MtdSimGun/single_muon/eff_pos_{name}.pdf" />
+		<Legend>
+			<Position pos="top right" w="0.2" h="0.1" />
+			<Entry name="eff_pos_tpc_by_mc_{name}" title="RC / MC" />
+			<Entry name="eff_pos_mtd_by_mc_{name}" title="MTD / MC" />
+			<Entry name="eff_pos_mtd_by_tpc_{name}" title="MTD / RC" />
+		</Legend>
+	</PlotTemplate>
+
+	<PlotTemplate names="mPt, mEta, mPhi" >
+		<Histo name="eff_neg_tpc_by_mc_{name}" draw="hp" lc="#F00" mc="#F00"  optstat="0" logy="0" min="0" max="1.2" title="" gridy="1" xtitle="@xtitle.{name}" lw="2"/>
+		<Histo name="eff_neg_mtd_by_mc_{name}" draw="same hp" lc="#000" mc="#000" lw="2"/>
+		<Histo name="eff_neg_mtd_by_tpc_{name}" draw="same hp" lc="#33F" mc="#33F" lw="2"/>
+
+		<TLatex x="0.4" y="0.9" text="Negative Muons" ftp="18" />
+		<Export url="export/MtdSimGun/single_muon/eff_neg_{name}.pdf" />
+
+		<Legend>
+			<Position pos="top right" w="0.2" h="0.1" />
+			<Entry name="eff_neg_tpc_by_mc_{name}" title="RC / MC" />
+			<Entry name="eff_neg_mtd_by_mc_{name}" title="MTD / MC" />
+			<Entry name="eff_neg_mtd_by_tpc_{name}" title="MTD / RC" />
+		</Legend>
+	</PlotTemplate>
+
+	<bins>
+		<mEta width="0.1" min="-0.5" max="0.5" />
+		<mPhi width="0.025" min="-3.5" max="3.5" />
+		<mPt>0.0, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0</mPt>
+	</bins>
+
+
+</config>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d0" url="data/mc_0.root" />
+	<Data name="d1" url="data/mc_1.root" />
+	<Data name="d2" url="data/mc_2.root" />
+	<Data name="d3" url="data/mc_3.root" />
+
+
+	<Margins>0.05, 0.12, 0.1, 0.1</Margins>
+
+	<PlotTemplate names="d0, d1, d2, d3">
+		<Axes lsx="0, 10, 10" lsy="0, 10, 10" optstat="0" logz="1" xtitle="M_{#mu#mu} (GeV/c^{2})" ytitle="p_{T}^{#mu#mu} (GeV/c)" />
+		<Histo name="{name}/mc_pt_vs_mass" draw="same colz" />
+
+		<Export url="export/mc_pair_muon_mc_pt_vs_mass_{name}.png" />
+	</PlotTemplate>
+
+	<PlotTemplate names="d0, d1, d2, d3">
+		<Axes lsx="0, 10, 10" lsy="0, 10, 10" optstat="0" logz="1" xtitle="M_{#mu#mu} (GeV/c^{2})" ytitle="p_{T}^{#mu#mu} (GeV/c)" />
+		<Histo name="{name}/tpc_pt_vs_mass" draw="same colz" />
+
+		<Export url="export/mc_pair_muon_tpc_pt_vs_mass_{name}.png" />
+	</PlotTemplate>
+
+	<PlotTemplate names="d0, d1, d2, d3">
+		<Axes lsx="0, 10, 10" lsy="0, 10, 10" optstat="0" logz="1" xtitle="M_{#mu#mu} (GeV/c^{2})" ytitle="p_{T}^{#mu#mu} (GeV/c)" />
+		<Histo name="{name}/mtd_pt_vs_mass" draw="same colz" />
+
+		<Export url="export/mc_pair_muon_mtd_pt_vs_mass_{name}.png" />
+	</PlotTemplate>
+
+
+</config>
