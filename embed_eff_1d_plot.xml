@@ -7,6 +7,8 @@
 		<Divide save_as="eff_{state}_6" nameA="rc{state}_6" nameB="mc{state}_6" />
 	</Transform>
 
+	<Margins>0.05, 0.05, 0.11, 0.11</Margins>
+	<TCanvas width="600" height="400" />
 
 	<xtitle>
 		<pt>p_{T}^{MC} (GeV/c)</pt>
@@ -23,7 +25,7 @@
 		<Histo name="eff_{name}_5" draw="h" lw="2" lc="#F00" optstat="0" gridy="1" min="0.0" max="1.1" xtitle="@xtitle.{name}" ytitle="RC / MC" xr="@xr.{name}" />
 		<Histo name="eff_{name}_6" draw="same h" lw="2" lc="#00F" />
 
-		<TLatex x="0.35" y="0.85" text="-0.5 < #eta^{MC} < 0.5" ftp="16" />
+		<TLatex x="0.35" y="0.9" text="-0.5 < #eta^{MC} < 0.5" ftp="16" />
 
 		<Export url="export/embedding/eff_{name}.pdf" />
 
@@ -35,11 +37,13 @@
 	</PlotTemplate>
 
 	<PlotTemplate names="5, 6">
+		<Margins>0.05, 0.11, 0.11, 0.11</Margins>
 		<Histo name="eff_eta_pt_{name}" draw="colz" optstat="0" title="RC / MC" xtitle="@xtitle.pt" ytitle="@xtitle.eta" yr="-0.6, 0.6" xtp="16" ytp="16" />
 		<Export url="export/embedding/eff_eta_pt_{name}.png" />
 	</PlotTemplate>
 
 	<PlotTemplate names="5, 6">
+		<Margins>0.05, 0.11, 0.11, 0.11</Margins>
 		<Histo name="eff_phi_pt_{name}" draw="colz" optstat="0" title="RC / MC" xtitle="@xtitle.pt" ytitle="@xtitle.phi" xr="0, 12" logz="0" xtp="16" ytp="16" />
 		<Export url="export/embedding/eff_phi_pt_{name}.png" />
 	</PlotTemplate>
