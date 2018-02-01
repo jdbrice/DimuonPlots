@@ -105,12 +105,12 @@
 	</Transform>
 
 	<PlotTemplate names="phi_pt, eta_pt, phi_eta, phi_pt_n0p5_eta_n0p4, phi_pt_n0p4_eta_n0p3, phi_pt_n0p3_eta_n0p2, phi_pt_n0p2_eta_n0p1, phi_pt_n0p1_eta_0p1, phi_pt_0p1_eta_0p3, phi_pt_0p3_eta_0p5">
-		<Histo name="pos_eff_{name}" draw="colz" optstat="0" title="#mu^{+}: MTD / RC" />
+		<Histo name="pos_eff_{name}" draw="colz" optstat="0" title="#mu^{+}: MTD / RC" xtp="18" ytp="18" />
 		<Export url="export/MtdSimGun/mtd_eff_pos_{name}.png" />
 	</Plot>
 
 	<PlotTemplate names="phi_pt, eta_pt, phi_eta, phi_pt_n0p5_eta_n0p4, phi_pt_n0p4_eta_n0p3, phi_pt_n0p3_eta_n0p2, phi_pt_n0p2_eta_n0p1, phi_pt_n0p1_eta_0p1, phi_pt_0p1_eta_0p3, phi_pt_0p3_eta_0p5">
-		<Histo name="neg_eff_{name}" draw="colz" optstat="0" title="#mu^{-}: MTD / RC" />
+		<Histo name="neg_eff_{name}" draw="colz" optstat="0" title="#mu^{-}: MTD / RC" xtp="18" ytp="18" />
 		<Export url="export/MtdSimGun/mtd_eff_neg_{name}.png" />
 	</Plot>
 	<bins>

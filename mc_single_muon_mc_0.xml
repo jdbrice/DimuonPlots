@@ -4,11 +4,17 @@
 
 	<Margins>0.05, 0.05, 0.13, 0.13</Margins>
 
+	<COL>
+		<MC>#00F</MC>
+		<RC>#F00</RC>
+		<MTD>#000</MTD>
+	</COL>
+
 	<Plot>
 		<Axes lsx="0, 10, 1" lsy="1, 1e6, 100" logy="1" optstat="0" xtitle="p_{T}^{MC} (GeV/c)" ytitle="dN/dp_{T}^{MC} (GeV/c)^{-1}" />
-		<Histo name="mc_p_mPt" draw="same h" linecolor="#F00" optstat="0"  />
-		<Histo name="tpc_p_mPt" draw="same h" linecolor="#00F" optstat="0"  />
-		<Histo name="mtd_p_mPt" draw="same h" linecolor="#000" optstat="0"  />
+		<Histo name="mc_p_mPt" draw="same h" linecolor="{COL.MC}" optstat="0"  />
+		<Histo name="tpc_p_mPt" draw="same h" linecolor="{COL.RC}" optstat="0"  />
+		<Histo name="mtd_p_mPt" draw="same h" linecolor="{COL.MTD}" optstat="0"  />
 
 		<TLatex x="0.4" y="0.9" text="Positive Muons" ftp="18" />
 
@@ -25,9 +31,9 @@
 
 	<Plot>
 		<Axes lsx="-0.6, 0.6, 1" lsy="1, 5e5, 100" logy="1" optstat="0" xtitle="#eta^{MC}" ytitle="dN/d#eta^{MC}" />
-		<Histo name="mc_p_mEta" draw="same h" linecolor="#F00" optstat="0"  />
-		<Histo name="tpc_p_mEta" draw="same h" linecolor="#00F" optstat="0"  />
-		<Histo name="mtd_p_mEta" draw="same h" linecolor="#000" optstat="0"  />
+		<Histo name="mc_p_mEta" draw="same h" linecolor="{COL.MC}" optstat="0"  />
+		<Histo name="tpc_p_mEta" draw="same h" linecolor="{COL.RC}" optstat="0"  />
+		<Histo name="mtd_p_mEta" draw="same h" linecolor="{COL.MTD}" optstat="0"  />
 
 		<Export url="export/mc_single_muon_pos_mEta_0.pdf" />
 
@@ -43,9 +49,9 @@
 
 	<Plot>
 		<Axes lsx="-3.4, 3.4, 1" lsy="1, 5e4, 100" logy="1" optstat="0" xtitle="#phi^{MC}" ytitle="dN/d#phi^{MC}" />
-		<Histo name="mc_p_mPhi" draw="same h" linecolor="#F00" optstat="0"  />
-		<Histo name="tpc_p_mPhi" draw="same h" linecolor="#00F" optstat="0"  />
-		<Histo name="mtd_p_mPhi" draw="same h" linecolor="#000" optstat="0"  />
+		<Histo name="mc_p_mPhi" draw="same h" linecolor="{COL.MC}" optstat="0"  />
+		<Histo name="tpc_p_mPhi" draw="same h" linecolor="{COL.RC}" optstat="0"  />
+		<Histo name="mtd_p_mPhi" draw="same h" linecolor="{COL.MTD}" optstat="0"  />
 
 		<Export url="export/mc_single_muon_pos_mPhi_0.pdf" />
 
@@ -62,9 +68,9 @@
 
 	<Plot>
 		<Axes lsx="0, 10, 1" lsy="1, 1e6, 100" logy="1" optstat="0" xtitle="p_{T}^{MC} (GeV/c)" ytitle="dN/dp_{T}^{MC} (GeV/c)^{-1}" />
-		<Histo name="mc_m_mPt" draw="same h" linecolor="#F00" optstat="0"  />
-		<Histo name="tpc_m_mPt" draw="same h" linecolor="#00F" optstat="0"  />
-		<Histo name="mtd_m_mPt" draw="same h" linecolor="#000" optstat="0"  />
+		<Histo name="mc_m_mPt" draw="same h" linecolor="{COL.MC}" optstat="0"  />
+		<Histo name="tpc_m_mPt" draw="same h" linecolor="{COL.RC}" optstat="0"  />
+		<Histo name="mtd_m_mPt" draw="same h" linecolor="{COL.MTD}" optstat="0"  />
 
 		<TLatex x="0.4" y="0.9" text="Negative Muons" ftp="18" />
 
@@ -81,9 +87,9 @@
 
 	<Plot>
 		<Axes lsx="-0.6, 0.6, 1" lsy="1, 5e5, 100" logy="1" optstat="0" xtitle="#eta^{MC}" ytitle="dN/d#eta^{MC}" />
-		<Histo name="mc_m_mEta" draw="same h" linecolor="#F00" optstat="0"  />
-		<Histo name="tpc_m_mEta" draw="same h" linecolor="#00F" optstat="0"  />
-		<Histo name="mtd_m_mEta" draw="same h" linecolor="#000" optstat="0"  />
+		<Histo name="mc_m_mEta" draw="same h" linecolor="{COL.MC}" optstat="0"  />
+		<Histo name="tpc_m_mEta" draw="same h" linecolor="{COL.RC}" optstat="0"  />
+		<Histo name="mtd_m_mEta" draw="same h" linecolor="{COL.MTD}" optstat="0"  />
 
 		<Export url="export/mc_single_muon_neg_mEta_0.pdf" />
 
@@ -99,9 +105,9 @@
 
 	<Plot>
 		<Axes lsx="-3.4, 3.4, 1" lsy="1, 5e4, 100" logy="1" optstat="0" xtitle="#phi^{MC}" ytitle="dN/d#phi^{MC}" />
-		<Histo name="mc_m_mPhi" draw="same h" linecolor="#F00" optstat="0"  />
-		<Histo name="tpc_m_mPhi" draw="same h" linecolor="#00F" optstat="0"  />
-		<Histo name="mtd_m_mPhi" draw="same h" linecolor="#000" optstat="0"  />
+		<Histo name="mc_m_mPhi" draw="same h" linecolor="{COL.MC}" optstat="0"  />
+		<Histo name="tpc_m_mPhi" draw="same h" linecolor="{COL.RC}" optstat="0"  />
+		<Histo name="mtd_m_mPhi" draw="same h" linecolor="{COL.MTD}" optstat="0"  />
 
 		<Export url="export/mc_single_muon_neg_mPhi_0.pdf" />
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Log url="debug.log" />
+	<Data name="dd" url="data/MTD_Scaled_STAR.root" />
+
+	<Transform>
+		<Add save_as="cocktail_sum" names="Scaled_pT_eta_mumu, Scaled_pT_ccbar_mumu, Scaled_pT_jpsi_mumu, Scaled_pT_omega_mumu, Scaled_pT_omega_pi0mumu, Scaled_pT_rho_mumu, Scaled_pT_phi_mumu, Scaled_pT_eta_gammamumu, Scaled_pT_etaprime_gammamumu" />
+	</Transform>
+
+
+	<Plot>
+		<Histo name="cocktail_sum" draw="colz" xr="0, 3.3" yr="0, 5" logz="1" optstat="0" title="Hadronic Cocktail; M_{#mu#mu} (GeV/c^{2}); p_{T}^{#mu#mu} (GeV/c)" xtp="18" ytp="18" />
+		<Export url="export/cocktail/Cocktail_vs_pT.png" />
+	</Plot>
+
+</config>

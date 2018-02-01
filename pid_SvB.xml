@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Log url="debug.log" />
+	<Data name="d" url="export/pid/pdfs.root" />
+
+	<Margins>0.015, 0.04, 0.13, 0.13</Margins>
+	<Transform>
+		<Projection save_as="S" axis="y" name="d/sig_pos_pT" />
+		<Projection save_as="B" axis="y" name="d/bg_pos_pT" />
+
+		<ProjectionY save_as="S0" name="d/sig_pos_pT" x1="0.9" x2="1.5" />
+		<ProjectionY save_as="B0" name="d/bg_pos_pT" x1="0.9" x2="1.5" />
+
+		<ProjectionY save_as="S1" name="d/sig_pos_pT" x1="1.5" x2="2.0" />
+		<ProjectionY save_as="B1" name="d/bg_pos_pT" x1="1.5" x2="2.0" />
+
+		<ProjectionY save_as="S2" name="d/sig_pos_pT" x1="2.0" x2="3.0" />
+		<ProjectionY save_as="B2" name="d/bg_pos_pT" x1="2.0" x2="3.0" />
+
+		<ProjectionY save_as="S3" name="d/sig_pos_pT" x1="3.0" x2="5.0" />
+		<ProjectionY save_as="B3" name="d/bg_pos_pT" x1="3.0" x2="5.0" />
+
+
+		<Scale save_as="sbg_pos_pT" name="bg_pos_pT" factor="10.0" />
+		<Scale save_as="sbg_neg_pT" name="bg_neg_pT" factor="10.0" />
+	</Transform>
+
+	<Transform>
+		
+		<Add save_as="combined_pos_pT" nameA="sig_pos_pT" nameB="sbg_pos_pT" />
+		<Add save_as="combined_neg_pT" nameA="sig_neg_pT" nameB="sbg_neg_pT" />
+	</Transform>
+
+	<Transform>
+		<Add save_as="combined_pT" nameA="combined_pos_pT" nameB="combined_neg_pT" />
+	</Transform>
+
+	<Plot>
+		<Histo name="S" draw="H" lw="2" lc="#F00" fca="#F00, 0.3" min="1e1" logy="1" optstat="0" title=";NN Response; dN/d(NN response)" ytp="18" xtp="18"/>
+		<Histo name="B" draw="H same" lw="2" lc="#00F" fca="#00F, 0.3"/>
+		<Export url="export/pid/SvB_all_pT.pdf" />
+
+		<Legend columns="2" border_size="0" fill_style="0">
+			<Position pos="top hcenter" padding="0.02, 0, 0, 0" w="0.5" h="0.2" />
+			<Entry name="B" title="Background" opt="fl" />
+			<Entry name="S" title="Signal" opt="fl" />
+		</Legend>
+	</Plot>
+
+	<PlotTemplate names="0, 1, 2, 3">
+		<Histo name="S{name}" draw="H" lw="2" lc="#F00" fca="#F00, 0.3" min="1e0" logy="1" optstat="0" title=";NN Response; dN/d(NN response)" ytp="18" xtp="18"/>
+		<Histo name="B{name}" draw="H same" lw="2" lc="#00F" fca="#00F, 0.3"/>
+		<Export url="export/pid/SvB_pT_{name}.pdf" />
+
+		<Legend columns="2" border_size="0" fill_style="0">
+			<Position pos="top hcenter" padding="0.02, 0, 0, 0" w="0.5" h="0.2" />
+			<Entry name="B{name}" title="Background" opt="fl" />
+			<Entry name="S{name}" title="Signal" opt="fl" />
+		</Legend>
+	</PlotTemplate>
+
+
+	<Plot>
+		<Margins>0.07, 0.11, 0.13, 0.13</Margins>
+		<Histo name="d/sig_pos_pT" draw="colz" logz="1" title="Signal;p_{T} (GeV/c); NN response" ytp="18" xtp="18" />
+		<Export url="export/pid/pid_sig_pos_vs_pt.png" />
+	</Plot>
+
+	<Plot>
+		<Margins>0.07, 0.11, 0.13, 0.13</Margins>
+		<Histo name="d/bg_pos_pT" draw="colz" logz="1" title="Background;p_{T} (GeV/c); NN response" ytp="18" xtp="18" />
+		<Export url="export/pid/pid_bg_pos_vs_pt.png" />
+	</Plot>
+
+	<Plot>
+		<Margins>0.07, 0.11, 0.13, 0.13</Margins>
+		<Histo name="combined_pT" draw="colz" logz="1" title="Signal & Background;p_{T} (GeV/c); NN response" ytp="18" xtp="18" />
+		<Export url="export/pid/pid_all_vs_pt.png" />
+	</Plot>
+
+
+
+</config>
