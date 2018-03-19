@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" url="export/pid/btof.root" />
+
+	<Plot>
+		<Histo name="d/inv_beta_vs_p" draw="colz" yr="0.8, 1.4" xr="0.8, 4" logz="1" optstat="0" title="MTD Matched tracks" xtitle="p (GeV/c)" ytitle="#beta^{-1}" ytp="18" xtp="18" xto="0.8" yto="0.8"/>
+		<TF1 name="fP" formula="TMath::Sqrt( 1.0 + pow( {m} / x, 2 ) )" m="0.938" min="0.0" max="4" linewidth="2" linecolor="#FF0000"/>
+		<TF1 name="fK" formula="TMath::Sqrt( 1.0 + pow( {m} / x, 2 ) )" m="0.4936" min="0.0" max="4" linewidth="2" linecolor="#0000FF"/>
+		
+		<TF1 name="fMu" formula="TMath::Sqrt( 1.0 + pow( {m} / x, 2 ) )" m="0.105" min="0.0" max="4" linewidth="2" linecolor="#000000"/>
+
+		<Legend border_size="1" >
+			<Position pos="top right" w="0.2"/>
+			<Entry name="fP" title="p / #bar{p}" opt="l" />
+			<Entry name="fK" title="K^{+-}" opt="l" />
+			<Entry name="fMu" title="#mu^{+-} (#pi^{+-})" opt="l" />
+		</Legend>
+		<Export url="export/pid/inv_beta_vs_p.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="d/inv_beta_kaon_vs_p" draw="colz" yr="0.8, 1.4" xr="0.8, 4" logz="1" optstat="0" title="MTD Matched tracks" xtitle="p (GeV/c)" ytitle="#beta^{-1}" ytp="18" xtp="18" xto="0.8" yto="0.8"/>
+		<TF1 name="fK" formula="TMath::Sqrt( 1.0 + pow( {m} / x, 2 ) )" m="0.4936" min="0.0" max="4" linewidth="2" linecolor="#0000FF"/>
+
+		<Export url="export/pid/inv_beta_kaon_vs_p.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="d/inv_beta_proton_vs_p" draw="colz" yr="0.8, 1.4" xr="0.8, 4" logz="1" optstat="0" title="MTD Matched tracks" xtitle="p (GeV/c)" ytitle="#beta^{-1}" ytp="18" xtp="18" xto="0.8" yto="0.8"/>
+		<TF1 name="fK" formula="TMath::Sqrt( 1.0 + pow( {m} / x, 2 ) )" m="0.938" min="0.0" max="4" linewidth="2" linecolor="#0000FF"/>
+
+		<Export url="export/pid/inv_beta_proton_vs_p.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="d/kaon_dtof_vs_pt" draw="colz" logz="1"  xr="0.8, 4" yr="-2, 8"/>
+		<Export url="export/pid/kaon_dtof_vs_pt.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="d/proton_dtof_vs_pt" draw="colz"  logz="1" xr="0.8, 4" yr="-2, 8"/>
+		<Export url="export/pid/proton_dtof_vs_pt.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="d/kaon_dtof_vs_p" draw="colz" logz="1"  xr="0.8, 4" yr="-2, 8" title="Kaon" xtitle="p (GeV/c)" ytitle=" MTD dTof (ns)"/>
+		<Export url="export/pid/kaon_dtof_vs_p.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="d/proton_dtof_vs_p" draw="colz"  logz="1" xr="0.8, 4" yr="-2, 8" title="Proton" xtitle="p (GeV/c)" ytitle=" MTD dTof (ns)"/>
+		<Export url="export/pid/proton_dtof_vs_p.png" />
+	</Plot>
+
+	
+
+	<!-- FemtoDst->Draw( " MtdPidTraits[Tracks.mMtdPidTraitsIndex].mDeltaTimeOfFlight >>( 1000, -10, 15 )", "Tracks.mBTofPidTraitsIndex > -1 && Tracks.mMtdPidTraitsIndex > -1 && 1.0/(BTofPidTraits[Tracks.mBTofPidTraitsIndex].mBTofBeta/20000.0) > 1.06 && 1.0/(BTofPidTraits[Tracks.mBTofPidTraitsIndex].mBTofBeta/20000.0) < 1.12 && sqrt( pow(Tracks.mPMomentum_mX1, 2)+pow(Tracks.mPMomentum_mX2, 2) +pow(Tracks.mPMomentum_mX3, 2) ) < 1.2 && sqrt( pow(Tracks.mPMomentum_mX1, 2)+pow(Tracks.mPMomentum_mX2, 2) +pow(Tracks.mPMomentum_mX3, 2) ) > 1.0", "" ) -->
+</config>

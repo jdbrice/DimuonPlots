@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+	<Data name="d" treeName="PairDst" url="data/pair_dst_nodca.root" />
+
+	<Transform>
+		<Draw data="d" name="hls" draw="sqrt( pow( d1_mPid, 2 ) + pow( d2_mPid, 2 ) )" select="mChargeSum!=0 && mMass > 3.0 && mMass < 3.2" bins_x="bins.pid" xtitle="pairPID" />
+		<Draw data="d" name="huls" draw="sqrt( pow( d1_mPid, 2 ) + pow( d2_mPid, 2 ) )" select="mChargeSum==0 && mMass > 3.0 && mMass < 3.2" bins_x="bins.pid" xtitle="pairPID" />
+		<!-- <Draw data="d" name="hulsr" draw="sqrt( pow( d1_mPid, 2 ) + pow( d2_mPid, 2 ) )" select="mChargeSum==0 && mMass > 1.1 && mMass < 2.9" bins_x="bins.pid" /> -->
+	</Transform>
+
+	<Transform>
+		<Sumw2 name="huls" />
+		<Sumw2 name="hls" />
+	</Transform>
+
+	<Transform>
+		<Divide save_as="hratio" nameA="huls" nameB="hls" />
+	</Transform>
+
+	<Transform>
+		<Scale save_as="hsratio" name="hratio" factor="1e3" />
+	</Transform>
+
+	<Plot>
+		<Histo name="huls" lc="#F00" draw="hpe" lw="2" optstat="0" xtitle="pairPID" />
+		<Histo name="hls" lc="#00F" draw="same hpe" lw="2" />
+
+		<Export url="export/lsr/demo_pp.pdf" />
+
+		<Legend>
+			<Position pos="top left" w="0.3" padding="0.02, 0.0, 0.0, 0.02" />
+			<Entry name="huls" title="(+-)" />
+			<Entry name="hls" title="(++)+(--)" />
+		</Legend>
+	</Plot>
+
+	<Plot>
+		<Histo name="huls" lc="#F00" lw="2" draw="hpe" logy="1" optstat="0" xtitle="pairPID" />
+		<Histo name="hls" lc="#00F" lw="2" draw="same hpe" />
+		<!-- <Histo name="hsratio" lc="#000" lw="2" draw="same h" /> -->
+
+		<Export url="export/lsr/demo_pp_semilog.pdf" />
+
+		<Legend>
+			<Position pos="top left" w="0.3" padding="0.02, 0.0, 0.0, 0.02" />
+			<Entry name="huls" title="(+-)" />
+			<Entry name="hls" title="(++)+(--)" />
+		</Legend>
+	</Plot>
+
+	<Plot>
+		
+		<Histo name="hratio" lc="#000" lw="2" draw="hpe" max="2.0"/>
+
+		<Export url="export/lsr/demo_pp_ratio.pdf" />
+	</Plot>
+
+	<bins>
+		<pid min="-0.1" max="1.5" width="0.05" />
+	</bins>
+
+</config>

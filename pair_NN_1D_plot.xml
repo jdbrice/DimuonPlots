@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" url="export/pairNN/1d.root" />
+
+	<Margins>
+		0.05, 0.05, 0.11, 0.11
+	</Margins>
+
+	<Plot>
+		<Histo name="d/sig" lc="#F00" lw="2" draw="hpe" logy="1" optstat="0" xtitle="pairPID = sqrt( pid_{1}^{2} + pid_{2}^{2} )" min="10"/>
+		<Histo name="d/bg" lc="#00F" lw="2" draw=" same hpe" />
+		<Histo name="d/mix" lc="#000" lw="2" draw="same hpe" />
+
+		<Export url="export/pairNN/1d.pdf" />
+
+		<Legend>
+			<Position pos="bottom right" w="0.3" padding="0.0, 0.04, 0.03, 0" />
+			<Entry name="d/sig" title="mu+mu (signal)" />
+			<Entry name="d/mix" title="mu+bg (mixed)" />
+			<Entry name="d/bg" title="bg+bg (bg)" />
+		</Legend>
+	</Plot>
+
+</config>

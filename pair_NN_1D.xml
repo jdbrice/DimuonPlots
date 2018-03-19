@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="s" treeName="sigPairs" url="data/pairNN_all.root" />
+	<Data name="b" treeName="bgPairs" url="data/pairNN_all.root" />
+	<Data name="m" treeName="mixedPairs" url="data/pairNN_all.root" />
+
+	<TFile url="export/pairNN/1d.root" />
+
+	<Transform>
+		<Draw data="s" name="sig" draw="sqrt( pow(pid1,2)+pow(pid2,2) )" bins_x="pid"/>
+		<Draw data="b" name="bg" draw="sqrt( pow(pid1,2)+pow(pid2,2) )" bins_x="pid"/>
+		<Draw data="m" name="mix" draw="sqrt( pow(pid1,2)+pow(pid2,2) )" bins_x="pid"/>
+	</Transform>
+
+
+	<pid min="0.0" max="1.5" width="0.01" />
+</config>
