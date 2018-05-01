@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" url="export/cand/qa.root" />
+
+	<!-- <PlotTemplate names="mPt, mEta, mPhi, mNHitsFit, mNHitsDedx, mNHitsMax, mNHitsRatio, mNSigmaPion, mDCA, mPid">
+		<Histo name="d1_{name}" draw="hpe"/>
+		<Export url="export/cand/d1_{name}.pdf" />
+	</PlotTemplate> -->
+
+	<title d1="Positive Tracks" d2="Negative Tracks" />
+
+	<OptStats x="0.92" w="0.20" y="0.99" h="0.25" />
+	<Margins>0.01, 0.04, 0.12, 0.12</Margins>
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mPt" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="p_{T} (GeV/c)" ytitle="dN/dp_{T} (GeV/c)^{-1}" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mPt.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mEta" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="#eta" ytitle="dN/d#eta" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mEta.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mPhi" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="#phi" ytitle="dN/d#phi" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mPhi.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mNHitsFit" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="nHitsFit" ytitle="dN/dnHitsFit" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mNHitsFit.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mNHitsDedx" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="nHitsDedx" ytitle="dN/dnHitsDedx" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mNHitsDedx.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mNHitsMax" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="nHitsMax" ytitle="dN/dnHitsMax" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mNHitsMax.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mNHitsRatio" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="nHitsRatio" ytitle="dN/dnHitsRatio" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mNHitsRatio.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mNSigmaPion" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="n#sigma_{#pi}" ytitle="dN/dn#sigma_{#pi}" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mNSigmaPion.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mDCA" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="DCA (cm)" ytitle="dN/dDCA (cm)^{-1}" title="@title:{name}" optstat="010" xrange="0, 4"/>
+		<Export url="export/cand/{name}_mDCA.pdf" />
+	</PlotTemplate >
+
+	<PlotTemplate names="d1, d2">
+		<Histo name="{name}_mPid" draw="hpe" optstat="0" logy="1" fca="#00F, 0.3" xtitle="Pid" ytitle="dN/dPid" title="@title:{name}" optstat="010" />
+		<Export url="export/cand/{name}_mPid.pdf" />
+	</PlotTemplate >
+
+
+</config>

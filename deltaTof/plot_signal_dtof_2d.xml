@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" url="sig_deltaTOF_pdfs.root" />
+	<TCanvas width="1900" height="1200" />
+	<Margins>0.03, 0.15, 0.15, 0.15</Margins>
+	<Plot>
+		<Histo name="d/hsignalPdf" draw="colz" xtitle="p_{T}^{#mu} (GeV/c)" ytitle="#Delta Time-of-Flight" logz="0" yr="-5, 5" xr="0, 10" />
+		<Export url="signaldTOF2D.png" />
+	</Plot>
+
+
+</config>

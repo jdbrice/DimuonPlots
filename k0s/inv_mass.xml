@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Log url="debug.log" />
+	<Data name="d" url="k0s_-1.root" />
+
+	<OptStats x="0.87" y="0.94"/>
+	<TCanvas width="900" height="1200"/>
+	<Margins>0.06, 0.13, 0.13, 0.13</Margins>
+	<Transform>
+		<Projection axis="x" save_as="single_mtd_mass" name="d/pt_mass_smtd" />
+		<Projection axis="x" save_as="both_mtd_mass" name="d/pt_mass_bmtd" />
+	</Transform>
+
+	<Plot>
+		<Histo name="d/pt_mass_smtd" draw="colz" contours="50" xr="0.200, 1.0"  logz="1" optstat="10" title="MTD + non-MTD" xtitle="M_{#pi^{+}#pi^{-} } (GeV/c^{2})" ytitle="p_{T}^{#pi^{+}#pi^{-} } (GeV/c)"/>
+		<Export url="single_mtd_pt_mass.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="single_mtd_mass" draw="h" xr="0.200, 1.0" fca="#00A, 0.3"  optstat="10" title="MTD + non-MTD" xtitle="M_{#pi^{+}#pi^{-} } (GeV/c^{2})"  ytitle="dN/dM_{#pi^{+}#pi^{-} } (GeV/c^{2})^{-1}" axisdigits="3" yto="1.3"/>
+		<Export url="single_mtd_mass.pdf" />
+	</Plot>
+
+	<Plot>
+		<Histo name="d/pt_mass_bmtd" draw="colz" contours="50" xr="0.200, 1.0"  logz="1" optstat="10" title="MTD + MTD" xtitle="M_{#pi^{+}#pi^{-} } (GeV/c^{2})" ytitle="p_{T}^{#pi^{+}#pi^{-} } (GeV/c)"/>
+		<Export url="both_mtd_pt_mass.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="both_mtd_mass" draw="h" xr="0.200, 1.0" fca="#00A, 0.3"  optstat="10" title="MTD + MTD" xtitle="M_{#pi^{+}#pi^{-} } (GeV/c^{2})"  ytitle="dN/dM_{#pi^{+}#pi^{-} } (GeV/c^{2})^{-1}" axisdigits="3" yto="1.5"/>
+		<Export url="both_mtd_mass.pdf" />
+	</Plot>
+</config>

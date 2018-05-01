@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" url="pairs_ub.root" />
+	
+	<pt1>1.0</pt1>
+	<pt2>1.5</pt2>
+
+	<Margins>0.07, 0.04, 0.12, 0.12</Margins>
+	<TCanvas width="1200" height="900" />
+	<Transform>
+		<Projection save_as="huls" name="d/uls_pt_mass" axis="x" y1="1" y2="1.5" />
+		<Projection save_as="hls" name="d/ls_pt_mass" axis="x" y1="1" y2="1.5" />
+	</Transform>
+
+	<TLatex text=" {pt1} < p_{T}^{#mu#mu} < {pt2} (GeV/c)" x="0.15" y="0.85" point="14" font="42" />
+
+	<Transform>
+		<Rebin save_as="hbuls" name="huls" bins_x="mass" />
+		<Rebin save_as="hbls" name="hls" bins_x="mass" />
+	</Transform>
+
+	<Transform>
+		<Scale name="hbuls" factor="1.0" opt="width" />
+		<Scale name="hbls" factor="1.00" opt="width" />
+	</Transform>
+
+	<Transform>
+		<Add save_as="hsig" nameA="hbuls" nameB="hbls" mod="-1" />
+	</Transform>
+
+	<Plot>
+		<Histo name="hbuls" draw="hpe" lc="#F00" yr="1, 1e5" logy="1" xr="0, 1.5" optstat="0"/>
+		<Histo name="hbls" draw="same hpe" lc="#00F" />
+		<Histo name="hsig" draw="same hpe" lc="#000" />
+		<Export url="raw_signal.png" />
+	</Plot>
+
+	<Plot>
+		<Histo name="d/uls_pt_mass" draw="colz" />
+		<Export url="raw_uls.png" />
+	</Plot>
+
+
+	<mass>0.0, 0.2, 0.3, 0.4, 0.45, 0.54, 0.55, 0.56, 0.57, 0.58, 0.62, 0.68, 0.74, 0.76, 0.77, 0.78, 0.79, 0.8, 0.82, 0.87, 1.0, 1.02, 1.03, 1.04, 1.05, 1.06, 1.1, 1.2, 1.4, 1.8, 2.0, 2.25 2.5, 3.0, 3.2, 3.5</mass>
+</config>
