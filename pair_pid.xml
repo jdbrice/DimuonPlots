@@ -5,7 +5,7 @@
 	<!-- <Data name="dp" treeName="MvaTree" url="data/protonPidNN.lis" /> -->
 	<TFile url="export/pid/pair_pid_data.root" />
 
-    <select all="(d1_mPt > 1.2 && d2_mPt > 1.2)" />
+    <select all="((d1_mPt < 1.2 || d1_mPt > 1.4) && (d2_mPt < 1.2 || d2_mPt > 1.4) )" />
 
 	<!-- Think about other cuts that may be needed for consistency  -->
 	<Transform>

@@ -7,23 +7,11 @@
 	<TCanvas w="1600" h="900" />
 	<Margins>0.05, 0.05, 0.13, 0.11</Margins>
 
-	<Transform>
-		<Scale save_as="smva" name="mva" factor="6.98693293022034693e-06"/>
-		<Scale save_as="stra" name="tra" factor="3.49346646511017347e-06"/>
-	</Transform>
 	<Plot>
-		<Histo name="d/tra" draw="pe1" color="#000" marker-style="8" marker-size="1.0" logy="0" max="3.25"  optstat="0" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)" />
-		<Histo name="d/mva" draw="same pe1" color="#F00" marker-style="8" marker-size="1.0" logy="0" />
+		<Histo name="d/tra" draw="pe1" color="#000" marker-style="8" marker-size="1.0" optstat="0" max="3.0" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)" />
+		<Histo name="d/mva" draw="same pe1" color="#F00" marker-style="8" marker-size="0.1"  />
 
-		<TLatex x="0.20" y="0.91" text="Run15 p+p at #sqrt{{s}} = 200 GeV" size="0.03"/>
-		<TLatex x="0.20" y="0.86" text="p_{T}^{#mu} > 1.0 [GeV/c], |#eta^{#mu}| < 0.5" size="0.03"/>
-		<TLatex x="0.20" y="0.81" text="|y_{#mu#mu}| < 0.5" size="0.03"/>
-
-		<Legend border_size="0" title="Raw unlike-sign">
-			<Position pos="top hcenter" padding="0.01, 00.01, 0, 0.05" h="0.12" w="0.2" />
-			<Entry name="d/tra" title="Traditional PID" opt="pe" marker-size="2" />
-			<Entry name="d/mva" title="DNN PID" opt="pe" marker-size="2"/>
-		</Legend>
+		<Include url="Scope[0]" />
 		<Export url="export/pid/compare.png"/>
 	</Plot>
 
@@ -31,11 +19,7 @@
 		<Histo name="d/tra" norm="true" draw="pe1" color="#000" marker-style="8" marker-size="1.0" logy="0" max="0.25" optstat="0"  ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)"/>
 		<Histo name="d/mva" norm="true" draw="same pe1" color="#F00" marker-style="8" marker-size="1.0" logy="0" />
 
-		<Legend border_size="0" title="Raw unlike-sign">
-			<Position pos="top left" padding="0.05, 0,0, 0.05"/>
-			<Entry name="d/tra" title="Traditional PID" opt="pe"/>
-			<Entry name="d/mva" title="DNN PID" opt="pe"/>
-		</Legend>
+		<Include url="Scope[0]" />
 		<Export url="export/pid/compare-norm.png"/>
 	</Plot>
 
@@ -44,12 +28,7 @@
 		<Histo name="d/tra" draw="pe1" color="#000" marker-style="8" marker-size="1.0" logy="0" max="0.8" xr="0, 2.0" optstat="0"  ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)"/>
 		<Histo name="d/mva" draw="same pe1" color="#F00" marker-style="8" marker-size="1.0" logy="0" />
 
-		<!-- <Legend border_size="0" >
-			<Position pos="top left" padding="0.05, 0,0, 0.05"/>
-			<Entry name="d/tra" title="Traditional PID" opt="pe"/>
-			<Entry name="d/mva" title="DNN PID" opt="pe"/>
-		</Legend> -->
-
+		<Include url="Scope[0]" />
 		<Export url="export/pid/compare-lmr.png"/>
 	</Plot>
 
@@ -61,11 +40,7 @@
 		<TLatex x="0.20" y="0.81" text="p_{T}^{#mu} > 1.0 [GeV/c], |#eta^{#mu}| < 0.5" size="0.03"/>
 		<TLatex x="0.20" y="0.76" text="|y_{#mu#mu}| < 0.5" size="0.03"/>
 
-		<Legend border_size="0" title="Raw unlike-sign">
-			<Position pos="top hcenter" padding="0.05, 00.01, 0, 0.05" h="0.12" w="0.2" />
-			<Entry name="d/tra" title="Traditional PID" opt="pe" marker-size="2" />
-			<Entry name="d/mva" title="DNN PID" opt="pe" marker-size="2"/>
-		</Legend>
+		<Include url="Scope[0]" />
 
 		<Export url="export/pid/compare-semi-logy.png"/>
 	</Plot>
@@ -73,6 +48,20 @@
 	<bins>
 
 	</bins>
+
+
+	<Scope>
+		<Legend border_size="0" title="Raw #mu^{+}#mu^{-}">
+			<Position pos="top hcenter" padding="0.01, 0.01, 0, 0.02" h="0.12" w="0.2" />
+			<Entry name="d/tra" title="Traditional PID" opt="pe" marker-size="2" />
+			<Entry name="d/mva" title="DNN PID" opt="pe" marker-size="2"/>
+		</Legend>
+
+	
+		<TLatex x="0.20" y="0.91" text="Run15 p+p at #sqrt{{s}} = 200 GeV" size="0.03"/>
+		<TLatex x="0.20" y="0.86" text="p_{T}^{#mu} > 1.0 [GeV/c], |#eta^{#mu}| < 0.5" size="0.03"/>
+		<TLatex x="0.20" y="0.81" text="|y_{#mu#mu}| < 0.5" size="0.03"/>
+	</Scope>
 
 
 	
