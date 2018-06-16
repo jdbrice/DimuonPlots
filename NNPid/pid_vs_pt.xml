@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<Data name="d" treeName="MvaTree" url="data/pidNN.lis" />
+	<mod>DNN_N6</mod>
+	<Data name="d" treeName="MvaTree" url="data/pidNN_N6.lis" />
 	<!-- <Data name="dk" treeName="MvaTree" url="data/kaonPidNN.lis" /> -->
 	<!-- <Data name="dp" treeName="MvaTree" url="data/protonPidNN.lis" /> -->
-	<TFile url="export/pid/pdfs.root" />
+	<TFile url="export/pid/pdfs_{mod}.root" />
 
 	<Transform states="mlp, dY, dZ, dTof, nsp, dca, cell, mod, bl" >
 		<Draw data="d" name="sig_pos_{state}" draw="{state} : pt" select="c==1 && classId==5" bins_x="bins.pt" bins_y="bins.{state}" />
@@ -29,7 +30,7 @@
 		<cell width="1" min="0" max="13" />
 		<mod width="1" min="0" max="13" />
 		<bl width="1" min="0" max="32" />
-		<pt width="0.05" min="0" max="15" />
+		<pt width="0.01" min="0" max="15" />
 	</bins>
 
 </config>

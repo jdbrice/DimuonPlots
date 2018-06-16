@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+	<CHANNEL>eta_gammamumu_dalitz</CHANNEL>
+	<Data name="{CHANNEL}" url="{DIMUON_ROOT}/data/Cocktail/{CHANNEL}.root" />
+
+	<TCanvas w="1600" h="900" />
+	<Margins>0.03, 0.03, 0.13, 0.13</Margins>
+
+	<Transform>
+		<Assign var="IPairCut_PtMc" expr="PairCut_PtMc->Integral()" />
+		<Assign var="IAccCut0_PtMc" expr="AccCut0_PtMc->Integral()" />
+		<Assign var="IAccCut1_PtMc" expr="AccCut1_PtMc->Integral()" />
+
+		<Assign var="eAccCut0_PtMc" expr='TString::Format( "%0.2e", AccCut0_PtMc->Integral() / PairCut_PtMc->Integral() )' />
+		<Assign var="eAccCut1_PtMc" expr='TString::Format( "%0.2e", AccCut1_PtMc->Integral() / PairCut_PtMc->Integral() )' />
+		
+		<Assign var="hmax_YRc" expr="PairCut_YRc->GetMaximum() * 10" />
+		<Assign var="hmax_PtMc" expr="PairCut_PtMc->GetMaximum() * 10" />
+		<Assign var="hmax_dNdM" expr="PairCut_dNdM->GetMaximum() * 10" />
+	</Transform>
+
+	<Range>
+		<dNdM>0, 4</dNdM>
+		<YRc>-1, 2</YRc>
+	</Range>
+	<YRange>
+		<dNdM>1, {hmax_dNdM}</dNdM>
+		<PtMc>1, {hmax_PtMc}</PtMc>
+		<YRc>1, {hmax_YRc}</YRc>
+	</YRange>
+
+	<Loop var="state" states="PtMc, dNdM, YRc">
+		<Plot>
+			<Histo name="PairCut_{state}" draw="he" lc="#00F" logy="1" optstat="0" xr="@Range.{state}" yr="@YRange.{state}"/>
+			<Histo name="AccCut0_{state}" draw="same he" lc="#F00" />
+			<Histo name="AccCut1_{state}" draw="same he" lc="#000" />
+
+			<TLatex x="0.6" y="0.80" text="N_{gen}={IPairCut_PtMc} (|y^{#mu#mu}|<0.5)" point="14"/>
+			<TLatex x="0.6" y="0.75" text="#varepsilon(|#eta^{#mu}|<0.5)={eAccCut0_PtMc}" point="14"/>
+			<TLatex x="0.6" y="0.70" text="#varepsilon(+p_{T}^{#mu}>1.1(GeV/c))={eAccCut1_PtMc}" point="14"/>
+
+
+			<Legend columns="3" border_size="0" fill-style="0" >
+				<Position pos="top right" w="0.7" h="0.1" padding="0.01, 0.01, 0, 0" />
+				<Entry name="PairCut_{state}" title="|y^{#mu#mu}|<0.5" opt="le" />
+				<Entry name="AccCut0_{state}" title="+|#eta^{#mu}|<0.5" opt="le" />
+				<Entry name="AccCut1_{state}" title="+p_{T}^{#mu}>1.1 GeV/c)" opt="le" />
+			</Legend>
+			<Export url="export/phasespace_vs_{state}_{CHANNEL}.pdf" />
+		</Plot>
+	</Loop>
+
+
+
+
+</config>

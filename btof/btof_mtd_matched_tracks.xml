@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" treeName="FemtoDst" url="/macstar/star2/jdb12/pp200/all_muon_cands_wbtof.root" />
+	<TFile url="btof_pion.root" />
+
+	<N>1000000000</N>
+	<v p="sqrt( pow(Tracks.mPMomentum_mX1, 2)+pow(Tracks.mPMomentum_mX2, 2) +pow(Tracks.mPMomentum_mX3, 2) )" pt="sqrt( pow(Tracks.mPMomentum_mX1, 2)+pow(Tracks.mPMomentum_mX2, 2) )" ib="1.0/(BTofPidTraits[Tracks.mBTofPidTraitsIndex].mBTofBeta/20000.0)" dtof="MtdPidTraits[Tracks.mMtdPidTraitsIndex].mDeltaTimeOfFlight" mtd="MtdPidTraits[Tracks.mMtdPidTraitsIndex]" cell="{v:mtd}.mMtdHitChan%12"/>
+	<!-- Transform>
+		<Draw data="d" name="inv_beta_vs_p" draw=" {v:ib} : {v:p}" select="Tracks.mBTofPidTraitsIndex > -1" bins_x="bins.p" bins_y="bins.ibeta" N="{N}"/>
+		<Draw data="d" name="inv_beta_kaon_vs_p" draw=" {v:ib} : {v:p}" select="Tracks.mBTofPidTraitsIndex > -1 && abs( {v:ib}- TMath::Sqrt( 1.0 + pow( 0.493 / {v:p}, 2 ) ) ) < 0.01" bins_x="bins.p" bins_y="bins.ibeta" N="{N}"/>
+		<Draw data="d" name="inv_beta_proton_vs_p" draw=" {v:ib} : {v:p}" select="Tracks.mBTofPidTraitsIndex > -1 && abs( {v:ib}- TMath::Sqrt( 1.0 + pow( 0.938 / {v:p}, 2 ) ) ) < 0.02" bins_x="bins.p" bins_y="bins.ibeta" N="{N}"/>
+		<Draw data="d" name="kaon_dtof_vs_pt" draw="{v:dtof} : {v:pt}" select="Tracks.mBTofPidTraitsIndex > -1 && Tracks.mMtdPidTraitsIndex > -1 && abs( {v:ib}- TMath::Sqrt( 1.0 + pow( 0.493 / {v:p}, 2 ) ) ) < 0.01" bins_x="bins.p" bins_y="bins.dtof" N="{N}"/>
+		<Draw data="d" name="proton_dtof_vs_pt" draw="{v:dtof} : {v:pt}" select="Tracks.mBTofPidTraitsIndex > -1 && Tracks.mMtdPidTraitsIndex > -1 && abs( {v:ib}- TMath::Sqrt( 1.0 + pow( 0.938 / {v:p}, 2 ) ) ) < 0.01" bins_x="bins.p" bins_y="bins.dtof" N="{N}"/>
+
+		<Draw data="d" name="kaon_dtof_vs_p" draw="{v:dtof} : {v:p}" select="Tracks.mBTofPidTraitsIndex > -1 && Tracks.mMtdPidTraitsIndex > -1 && abs( {v:ib}- TMath::Sqrt( 1.0 + pow( 0.493 / {v:p}, 2 ) ) ) < 0.01" bins_x="bins.p" bins_y="bins.dtof" N="{N}"/>
+		<Draw data="d" name="proton_dtof_vs_p" draw="{v:dtof} : {v:p}" select="Tracks.mBTofPidTraitsIndex > -1 && Tracks.mMtdPidTraitsIndex > -1 && abs( {v:ib}- TMath::Sqrt( 1.0 + pow( 0.938 / {v:p}, 2 ) ) ) < 0.01" bins_x="bins.p" bins_y="bins.dtof" N="{N}"/>
+	</Transform> -->
+
+
+
+	<cut v="abs({v:mtd}.mDeltaY) > 5 && abs({v:mtd}.mDeltaZ)>10 && (Tracks.mDCA/1000.0) > 0.25 && ({v:cell} < 3 || {v:cell} > 8)" />
+	<Transform>
+		<Draw data="d" name="pimu_dtof_vs_p" draw="{v:dtof} : {v:p}" select="Tracks.mBTofPidTraitsIndex > -1 && Tracks.mMtdPidTraitsIndex > -1 && {v:ib} < 1.01" bins_x="bins.p" bins_y="bins.dtof" N="{N}"/>
+		<Draw data="d" name="pion_dtof_vs_p" draw="{v:dtof} : {v:p}" select="Tracks.mBTofPidTraitsIndex > -1 && Tracks.mMtdPidTraitsIndex > -1 && {v:ib} < 1.01 && {cut:v}" bins_x="bins.p" bins_y="bins.dtof" N="{N}"/>
+
+		<Projection axis="y" save_as="pimu" name="pimu_dtof_vs_p" />
+		<Projection axis="y" save_as="pion" name="pion_dtof_vs_p" />
+
+		<Normalize name="pimu" />
+		<Normalize name="pion" />
+
+		<Style name="pion" lc="#F00" />
+
+		<Add save_as="bg" nameA="pimu" nameB="pion" mod="-1" />
+
+		<Style name="bg" lc="#000" />
+	</Transform>
+
+
+
+
+	<bins>
+		<p width="0.01" min="0.8" max="10.0" />
+		<ibeta width="0.001" min="0" max="2.0" />
+		<dtof width="0.01" min="-10" max="10" />
+	</bins>
+
+	<!-- FemtoDst->Draw( " MtdPidTraits[Tracks.mMtdPidTraitsIndex].mDeltaTimeOfFlight >>( 1000, -10, 15 )", "Tracks.mBTofPidTraitsIndex > -1 && Tracks.mMtdPidTraitsIndex > -1 && 1.0/(BTofPidTraits[Tracks.mBTofPidTraitsIndex].mBTofBeta/20000.0) > 1.06 && 1.0/(BTofPidTraits[Tracks.mBTofPidTraitsIndex].mBTofBeta/20000.0) < 1.12 && sqrt( pow(Tracks.mPMomentum_mX1, 2)+pow(Tracks.mPMomentum_mX2, 2) +pow(Tracks.mPMomentum_mX3, 2) ) < 1.2 && sqrt( pow(Tracks.mPMomentum_mX1, 2)+pow(Tracks.mPMomentum_mX2, 2) +pow(Tracks.mPMomentum_mX3, 2) ) > 1.0", "" ) -->
+</config>

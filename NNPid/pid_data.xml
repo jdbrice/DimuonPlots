@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
+	<mod>DNN_N6</mod>
 	<Data name="d" treeName="PairDst" url="data/pair_dst_DNN_N6.root" />
-	<TFile url="export/pid/data_pdfs.root" />
+	<TFile url="export/pid/data_pdfs_{mod}.root" />
 
 	<Transform>
 		<Draw data="d" name="pos_mlp_vs_pt" draw="d1_mPid : d1_mPt" select="mChargeSum==0" bins_x="bins.pt" bins_y="bins.mlp" />

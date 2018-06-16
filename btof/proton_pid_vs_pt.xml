@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<Data name="d" treeName="MvaTree" url="data/kaonPidNN.lis" />
-	<TFile url="export/pid/kaon_pdfs.root" />
+	<Data name="d" treeName="MvaTree" url="data/protonPidNN.lis" />
+	<TFile url="proton_pdfs.root" />
 
 	<Transform states="mlp, dY, dZ, dTof, nsp, dca, cell, mod, bl" >
-		<Draw data="d" name="kaon_pos_{state}" draw="{state} : pt" select="c==1 && classId==10" bins_x="bins.pt" bins_y="bins.{state}" />
-		<Draw data="d" name="kaon_neg_{state}" draw="{state} : pt" select="c==-1 && classId==10" bins_x="bins.pt" bins_y="bins.{state}" />
+		<Draw data="d" name="proton_pos_{state}" draw="{state} : pt" select="c==1 && classId==11" bins_x="bins.pt" bins_y="bins.{state}" />
+		<Draw data="d" name="proton_neg_{state}" draw="{state} : pt" select="c==-1 && classId==11" bins_x="bins.pt" bins_y="bins.{state}" />
 	</Transform>
 
 	<bins>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<Data name="d" treeName="MvaTree" url="data/kaonPidNN.lis" />
+	<TFile url="kaon_pdfs.root" />
+
+	<Transform states="mlp, dY, dZ, dTof, nsp, dca, cell, mod, bl" >
+		<Draw data="d" name="kaon_pos_{state}" draw="{state} : pt" select="c==1 && classId==10" bins_x="bins.pt" bins_y="bins.{state}" />
+		<Draw data="d" name="kaon_neg_{state}" draw="{state} : pt" select="c==-1 && classId==10" bins_x="bins.pt" bins_y="bins.{state}" />
+	</Transform>
+
+	<bins>
+		<mlp width="0.01" min="-0.5" max="1.2" />
+		<dY width="0.05" min="-80" max="80"/>
+		<dZ width="0.05" min="-100" max="100"/>
+		<dTof width="0.01" min="-10" max="15" />
+		<nsp width="0.01" min="-10" max="10" />
+		<dca width="0.01" min="0" max="5" />
+		<cell width="1" min="0" max="13" />
+		<mod width="1" min="0" max="13" />
+		<bl width="1" min="0" max="32" />
+		<pt width="0.05" min="0" max="15" />
+	</bins>
+
+</config>

@@ -3,10 +3,10 @@
 	<Log url="debug.log" />
 	<Data name="dd" url="data/MTD_Scaled_STAR.root" />
 
-	<pt1>2.2</pt1>
+	<pt1>0</pt1>
 	<pt2>100</pt2>
 
-	<TCanvas width="1900" height="1200" />
+	<TCanvas width="1900" height="900" />
 
 	<Transform states="eta_mumu, ccbar_mumu, jpsi_mumu, omega_mumu, omega_pi0mumu, rho_mumu, phi_mumu, eta_gammamumu, etaprime_gammamumu">
 		<ProjectionX save_as="{state}" name="dd/Scaled_pT_{state}" y1="{pt1}" />
@@ -22,14 +22,15 @@
 
 
 	<Margins>0.05, 0.05, 0.12, 0.12</Margins>
-	<TLatex x="0.60" y="0.91" text="Run15 pp at #sqrt{{s}} = 200 GeV" size="0.03"/>
-
-	<TLatex x="0.60" y="0.85" text="|Y_{#mu#mu}| < 0.5 & p_{T}^{#mu#mu} > {pt1} (GeV/c)" size="0.03"/>
-	<TLatex x="0.60" y="0.81" text="|#eta_{#mu}| < 0.5 & p_{T}^{#mu} > 1.1 (GeV/c)" size="0.03"/>
+	
+	<TLatex x="0.60" y="0.9" text="STAR Preliminary" point="22"/>
+	<TLatex x="0.60" y="0.84" text="p+p at #sqrt{s} = 200 GeV" point="22"/>
+	<TLatex x="0.60" y="0.79" text="|Y_{#mu#mu}| < 0.5 & p_{T}^{#mu#mu} > {pt1} (GeV/c)" point="18"/>
+	<TLatex x="0.60" y="0.73" text="|#eta_{#mu}| < 0.5 & p_{T}^{#mu} > 1.1 (GeV/c)" point="18"/>
 
 	<Plot>
 		<Histo name="eta_mumu" style="smooth" >
-			<style draw="hist c" linecolor="#83BF17" lw="2" yr="5e-12, 1e-5" xr="0, 3.3" logy="1" optstat="0" title=";M_{#mu#mu} (GeV/c^{2}); dN/dM_{#mu#mu} N_{evts} (GeV/c^{2})^{-1} " />
+			<style draw="hist c" linecolor="#83BF17" lw="2" yr="5e-12, 1e-5" xr="0, 3.3" logy="1" optstat="0" title=";M_{#mu#mu} (GeV/c^{2}); dN/(dM_{#mu#mu} N_{evts}) (GeV/c^{2})^{-1} " ytp="24" xtp="24" xto="0.7" yto="0.6" ylp="18" xlp="20" />
 		</Histo>
 
 		<Histo name="ccbar_mumu" style="smooth" >
@@ -61,8 +62,8 @@
 			<style draw="same hist c" linecolor="black"  lw="2" />
 		</Histo>
 
-		<Legend border_size="0" columns="2" >
-			<Position pos="top left" padding="0.01, 0.0, 0.0, 0.01" />
+		<Legend border_size="0" columns="3" text_point="20">
+			<Position pos="top left" padding="0.01, 0.0, 0.0, 0.01" h="0.22"/>
 			<Entry name="etaprime_gammamumu" title="#eta' #rightarrow#gamma#mu#mu" opt="l" />
 			<Entry name="eta_gammamumu" title="#eta#rightarrow#gamma#mu#mu" opt="l" />
 			<Entry name="omega_pi0mumu" title="#omega#rightarrow#pi^{0}#mu#mu" opt="l" />
@@ -72,6 +73,7 @@
 			<Entry name="omega_mumu" title="#omega#rightarrow#mu#mu" opt="l" />
 			<Entry name="Smooth_ccbar_mumu" title="c#bar{c}#rightarrow#mu#mu" opt="l" />
 			<Entry name="jpsi_mumu" title="J/#Psi#rightarrow#mu#mu" opt="l" />
+			<Entry name="ccbar_mumu" title="c#bar{c}#rightarrow#mu#mu" opt="l" />
 			<Entry name="cocktail_sum" title="sum" opt="l" />
 		</Legend>
 
