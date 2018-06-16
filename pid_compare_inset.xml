@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+	<ExportConfig url="pid-compare-inset-inline.xml"/>
+	<Data name="d" url="/Users/jdb/bnl/local/work/FemtoPairAnalysis/bin/compare-pid.root" inline="true"/>
+	
+	<!-- <TCanvas w="1600" h="900" /> -->
+	<TCanvas w="800" h="450" />
+	<Margins>0.05, 0.05, 0.13, 0.11</Margins>
+
+	<Plot>
+		<Histo name="d/tra" draw="pe1" color="#000" marker-style="8" marker-size="1.0" logy="0" max="0.8" xr="0, 2.0" optstat="0"  ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)"/>
+		<Histo name="d/mva" draw="same pe1" color="#F00" marker-style="8" marker-size="1.0" logy="0" />
+
+		<Export url="export/pid/compare-lmr-inset.png"/>
+	</Plot>
+</config>

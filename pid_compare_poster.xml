@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+	<ExportConfig url="pid-compare-poster-inline.xml"/>
+	<Data name="d" url="/Users/jdb/bnl/local/work/FemtoPairAnalysis/bin/compare-pid.root" inline="true"/>
+	
+	<TCanvas w="1600" h="900" />
+	<Margins>0.05, 0.05, 0.13, 0.11</Margins>
+
+	<Transform>
+		<Clone save_as="mva_inset" name="d/mva" />
+		<Clone save_as="tra_inset" name="d/tra" />
+	</Transform>
+
+	<Canvas cols="24" rows="24" w="1900" h="900">
+		<Pad gx="0, 24" gy="0, 24" name="pad0" m="0.025, 0.025, 0.13, 0.11">
+			<Histo name="d/tra" draw="pe1" color="#000" marker-style="8" marker-size="1.5" optstat="0" max="3.0" xr="0.0, 4.5" xtitle="M_{#mu^{+}#mu^{-} } (GeV/c^{2})" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)" xtp="24" ytp="20" yto="0.6" xto="0.8" lw="1.5"/>
+			<Histo name="d/mva" draw="same pe1" color="#F00" marker-style="8" marker-size="1.5" logy="0" lw="1.5"/>
+
+			<Include url="Scope[0]" />
+		</Pad>
+
+		<Pad gx="2.2, 15" gy="7, 19" name="pad1" m="0.03, 0, 0.1, 0.1">
+			<Histo name="tra_inset" draw="pe1" color="#000" marker-style="8" marker-size="1.5" optstat="0" max="0.7" xr="0.7, 1.1" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)" xtitle="M_{#mu^{+}#mu^{-} } (GeV/c^{2})" xlp="22" xtp="24" ylp="22" yto="0.8" lw="1.5"/>
+			<Histo name="mva_inset" draw="same pe1" color="#F00" marker-style="8" marker-size="1.5"  lw="1.5"/>
+		</Pad>
+
+		<!-- <Pad gx="2.2, 15" gy="7, 18" name="pad2" m="0.03, 0, 0.1, 0.1">
+			<Histo name="d/tra" draw="pe1" color="#000" marker-style="8" marker-size="1.0" optstat="0" min="0" max="0.2" xr="3.3, 4.5" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)" yto="1.7" xtitle="M_{#mu^{+}#mu^{-} } (GeV/c^{2})"/>
+			<Histo name="d/mva" draw="same pe1" color="#F00" marker-style="8" marker-size="1.0"  />
+		</Pad> -->
+		<Export url="export/pid/compare_pid_poster.pdf"/>
+	</Canvas>
+
+	<Scope>
+		<Legend border_size="0" title="Raw #mu^{+}#mu^{-} Spectra" text_point="20">
+			<Position pos="top hcenter" padding="0.01, 0.01, 0, 0.02" h="0.15" w="0.2" />
+			<Entry name="d/tra" title="Traditional PID" opt="pe" marker-size="2.0" />
+			<Entry name="d/mva" title="DNN PID" opt="pe" marker-size="2.0"/>
+		</Legend>
+
+	
+		<TLatex x="0.15" y="0.91" text="Run15 p+p at #sqrt{{s}} = 200 GeV" point="16" font="62"/>
+		<TLatex x="0.15" y="0.86" text="p_{T}^{#mu} > 1.0 [GeV/c], |#eta^{#mu}| < 0.5" point="16" font="62"/>
+		<TLatex x="0.15" y="0.81" text="|y_{#mu#mu}| < 0.5" point="16" font="62"/>
+
+		<TLatex x="0.73" y="0.91" text="STAR Preliminary" point="24" font="62" />
+	</Scope>
+
+
+	
+
+</config>

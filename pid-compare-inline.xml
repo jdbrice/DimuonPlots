@@ -1,0 +1,140 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<ExportConfig url="pid-compare-inline.xml"/>
+	<Data inline="true" name="d">
+		<HistogramData dims="1" name="mva" title="">
+			<BinEdgesX>
+				
+				
+			0.0, 0.2, 0.31, 0.4, 0.51, 0.63, 0.76, 0.775, 0.785, 0.8, 0.89, 0.965, 1.0, 1.01, 1.02, 1.035, 1.13, 1.25, 1.45, 1.65, 1.875, 2.075, 2.25, 2.475, 2.665, 2.85, 2.99, 3.02, 3.07, 3.12, 3.18, 3.24, 3.3, 3.4, 3.5, 3.6, 3.8, 3.85, 4.0, 4.5
+			</BinEdgesX>
+			<Values>
+				
+				
+			0.0, 0.161624, 0.223122, 0.245343, 0.260072, 0.31976, 0.434874, 0.588359, 0.468982, 0.255808, 0.213174, 0.197338, 0.460455, 0.588359, 0.375186, 0.183105, 0.158814, 0.127904, 0.105521, 0.080153, 0.072905, 0.089898, 0.080722, 0.100977, 0.129978, 0.191856, 0.430611, 1.350668, 2.744823, 1.236407, 0.309102, 0.166275, 0.135578, 0.117672, 0.13302, 0.166275, 0.143253, 0.106587, 0.075463
+			</Values>
+			<Errors>
+				
+				
+			0.0, 0.013709, 0.017807, 0.01689, 0.016649, 0.017737, 0.060895, 0.086749, 0.063238, 0.019067, 0.019067, 0.026854, 0.076742, 0.086749, 0.056561, 0.015701, 0.013011, 0.009044, 0.008215, 0.00675, 0.006828, 0.008106, 0.006774, 0.008245, 0.00948, 0.013239, 0.042847, 0.05878, 0.083794, 0.051339, 0.025669, 0.018827, 0.013169, 0.012268, 0.013044, 0.010312, 0.019143, 0.009533, 0.004394
+			</Errors>
+		</HistogramData>
+		<HistogramData dims="1" name="tra" title="">
+			<BinEdgesX>
+				
+				
+			0.0, 0.2, 0.31, 0.4, 0.51, 0.63, 0.76, 0.775, 0.785, 0.8, 0.89, 0.965, 1.0, 1.01, 1.02, 1.035, 1.13, 1.25, 1.45, 1.65, 1.875, 2.075, 2.25, 2.475, 2.665, 2.85, 2.99, 3.02, 3.07, 3.12, 3.18, 3.24, 3.3, 3.4, 3.5, 3.6, 3.8, 3.85, 4.0, 4.5
+			</BinEdgesX>
+			<Values>
+				
+				
+			0.0, 0.089531, 0.148263, 0.171867, 0.165788, 0.190745, 0.24914, 0.257201, 0.23302, 0.150217, 0.147139, 0.140691, 0.184657, 0.21983, 0.171467, 0.113386, 0.115777, 0.102221, 0.088152, 0.088127, 0.092878, 0.106774, 0.13649, 0.156195, 0.154831, 0.158434, 0.22789, 0.459005, 0.845465, 0.441491, 0.143622, 0.112846, 0.088372, 0.079798, 0.067268, 0.063091, 0.057595, 0.040009, 0.025061
+			</Values>
+			<Errors>
+				
+				
+			0.0, 0.00423, 0.006018, 0.005861, 0.005511, 0.005679, 0.019108, 0.023778, 0.01848, 0.006057, 0.006567, 0.0094, 0.020148, 0.021983, 0.015852, 0.005122, 0.004605, 0.003352, 0.003113, 0.002934, 0.003195, 0.003662, 0.003652, 0.004251, 0.004289, 0.004988, 0.012922, 0.014206, 0.01928, 0.012718, 0.007254, 0.00643, 0.004408, 0.004188, 0.003845, 0.002633, 0.005032, 0.002421, 0.00105
+			</Errors>
+		</HistogramData>
+		<Include processed="true" url="/Users/jdb/bnl/local/work/FemtoPairAnalysis/bin/compare-pid.root.xml"/>
+	</Data>
+	<TCanvas h="900" w="1600"/>
+	<Margins>
+		
+		0.05, 0.05, 0.13, 0.11
+	</Margins>
+	<Transform>
+		<Scale factor="6.98693293022034693e-06" name="mva" save_as="smva"/>
+		<Scale factor="3.49346646511017347e-06" name="tra" save_as="stra"/>
+	</Transform>
+	<Plot>
+		<Histo color="#000" draw="pe1" logy="0" marker-size="1.0" marker-style="8" max="3.25" name="d/tra" optstat="0" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)"/>
+		<Histo color="#F00" draw="same pe1" logy="0" marker-size="1.0" marker-style="8" name="d/mva"/>
+		<TLatex size="0.03" text="Run15 p+p at #sqrt{s} = 200 GeV" x="0.20" y="0.91"/>
+		<TLatex size="0.03" text="p_{T}^{#mu} > 1.0 [GeV/c], |#eta^{#mu}| < 0.5" x="0.20" y="0.86"/>
+		<TLatex size="0.03" text="|y_{#mu#mu}| < 0.5" x="0.20" y="0.81"/>
+		<Legend border_size="0" title="Raw unlike-sign">
+			<Position h="0.12" padding="0.01, 00.01, 0, 0.05" pos="top hcenter" w="0.2"/>
+			<Entry marker-size="2" name="d/tra" opt="pe" title="Traditional PID"/>
+			<Entry marker-size="2" name="d/mva" opt="pe" title="DNN PID"/>
+		</Legend>
+		<Export url="export/pid/compare.png"/>
+	</Plot>
+	<Plot>
+		<Histo color="#000" draw="pe1" logy="0" marker-size="1.0" marker-style="8" max="0.25" name="d/tra" norm="true" optstat="0" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)"/>
+		<Histo color="#F00" draw="same pe1" logy="0" marker-size="1.0" marker-style="8" name="d/mva" norm="true"/>
+		<Legend border_size="0" title="Raw unlike-sign">
+			<Position padding="0.05, 0,0, 0.05" pos="top left"/>
+			<Entry name="d/tra" opt="pe" title="Traditional PID"/>
+			<Entry name="d/mva" opt="pe" title="DNN PID"/>
+		</Legend>
+		<Export url="export/pid/compare-norm.png"/>
+	</Plot>
+	<Plot>
+		<Histo color="#000" draw="pe1" logy="0" marker-size="1.0" marker-style="8" max="0.8" name="d/tra" optstat="0" xr="0, 2.0" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)"/>
+		<Histo color="#F00" draw="same pe1" logy="0" marker-size="1.0" marker-style="8" name="d/mva"/>
+		<Export url="export/pid/compare-lmr.png"/>
+	</Plot>
+	<Plot>
+		<Histo color="#000" draw="pe1" logy="0" marker-size="1.0" marker-style="8" max="10.25" name="d/tra" optstat="0" ytitle="dN/dM (GeV/c^{2})^{-1} (arb. normalization)"/>
+		<Histo color="#F00" draw="same pe1" logy="1" marker-size="1.0" marker-style="8" name="d/mva"/>
+		<TLatex size="0.03" text="Run15 p+p at #sqrt{s} = 200 GeV" x="0.20" y="0.86"/>
+		<TLatex size="0.03" text="p_{T}^{#mu} > 1.0 [GeV/c], |#eta^{#mu}| < 0.5" x="0.20" y="0.81"/>
+		<TLatex size="0.03" text="|y_{#mu#mu}| < 0.5" x="0.20" y="0.76"/>
+		<Legend border_size="0" title="Raw unlike-sign">
+			<Position h="0.12" padding="0.05, 00.01, 0, 0.05" pos="top hcenter" w="0.2"/>
+			<Entry marker-size="2" name="d/tra" opt="pe" title="Traditional PID"/>
+			<Entry marker-size="2" name="d/mva" opt="pe" title="DNN PID"/>
+		</Legend>
+		<Export url="export/pid/compare-semi-logy.png"/>
+	</Plot>
+	<bins/>
+	<arg>
+		rbplotter
+	</arg>
+	<arg>
+		pid-compare-inline.xml
+	</arg>
+	<argc>
+		2
+	</argc>
+	<jobIndex>
+		-1
+	</jobIndex>
+	<argc>
+		
+		2
+	</argc>
+	<jobIndex>
+		
+		-1
+	</jobIndex>
+	<argc>
+		
+		2
+	</argc>
+	<jobIndex>
+		
+		-1
+	</jobIndex>
+	<argc>
+		2
+	</argc>
+	<jobIndex>
+		-1
+	</jobIndex>
+	<argc>
+		2
+	</argc>
+	<jobIndex>
+		-1
+	</jobIndex>
+	<argc>
+		2
+	</argc>
+	<jobIndex>
+		-1
+	</jobIndex>
+</config>
